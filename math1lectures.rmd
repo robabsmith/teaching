@@ -1,0 +1,709 @@
+---
+title: "Mathematics for Economics Lectures"
+author: "Rob Smith"
+date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
+output:
+  pdf_document: default
+  beamer_presentation: default
+---
+
+Vectors and Matrices {#sec:vectors}
+====================
+
+### Why learn about Matrices??
+
+[What are they good for?]{}
+
+-   [How we figure out how to move around in the space around us (the
+    geometric
+    understanding](https://www.youtube.com/watch?v=kjBOesZCoqc&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+
+-   [3D rendering of objects (nothing to do with this course, but very
+    cool)](https://www.youtube.com/watch?v=KdyvizaygyY&list=PLzH6n4zXuckrPkEUK5iMQrQyvj9Z6WCrm)
+
+-   []()
+
+-   []()
+
+### What is Matrix?
+
+[The Matrix - Intro and basic operations]{}
+
+-   The red text in these slides are all links to videos that you can
+    watch
+
+-   [Khan Academy: matrix playlist on
+    YouTube](https://www.youtube.com/watch?v=0oGJTQCy4cQ&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   [Intro - what is a
+    matrix??](https://www.youtube.com/watch?v=0oGJTQCy4cQ&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=1)
+
+-   By convention, we note $rows (m)$ first and then $columns (n)$, so
+    matrix $\mathbf{A}$ is an $m \times n$ matrix.
+
+$$\mathbf{M}=
+      \begin{bmatrix}
+        1 & 2 & 3 & 4 & 5 \\
+        3 & 4 & 5 & 6 & 7
+      \end{bmatrix}$$
+
+-   Matrix $\mathbf{M}$ has 2 rows, and 5 columns. $\mathbf{M}$ is a
+    $2 \times 5$ matrix.
+
+-   [Example, data in a
+    matrix](https://www.youtube.com/watch?v=PPOIlLhsT6s&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=2)
+
+-   Each number in the matrix is called an ‘element’.
+
+### Matrices and Vectors
+
+[What do they look like?]{}
+
+-   Matrix $$\mathbf{A}=
+              \begin{bmatrix}
+                1 & 2 & 3 \\
+                3 & 4 & 5
+              \end{bmatrix}$$
+
+-   Row vector $$\mathbf{b}=
+              \begin{bmatrix}
+                1 & 2 & 3
+              \end{bmatrix}$$
+
+-   Column vector $$\mathbf{f}=
+              \begin{bmatrix}
+                1\\
+                8\\
+                9
+              \end{bmatrix}$$
+
+Basic operations {#sec:operations}
+================
+
+### Basic operations {#basic-operations}
+
+[Scalar multiplication, addition and subtraction]{}
+
+-   [Scalar and matrix
+    multiplication](https://www.youtube.com/watch?v=TbaltFbJ3wE&index=3&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   Scalars are just numbers. To multiply a matrix by a number (scalar),
+    just multiply each element by that number!
+
+-   When used for multiplication this can be imagined as a number that
+    you will use to “scale” each entry of a matrix up or down.
+
+-   If $x$ is a scalar (number), and $\mathbf{A}$ is a matrix, then
+    $x \times \mathbf{A} = \mathbf{A} \times x$
+
+-   Or simply, $x\mathbf{A} = \mathbf{A}x$, and IS commutitive.
+
+-   When used for addition or subtraction, scalars can be imagined as
+    simple numbers, to be added or subtracted from each of the entries
+    in a matrix.
+
+-   Therefore, the order does not matter too much.
+    $x + \mathbf{A} = \mathbf{A} + x$, and
+    $\mathbf{A} - x = -x + \mathbf{A}$.
+
+-   Scalar addition, subtraction and multiplicaiton ARE commutitive and
+    associative.
+
+### Basic operations {#basic-operations-1}
+
+[Addition and subtraction of 2 or more matrices]{}
+
+-   [Addition and subtraction of
+    matrices](https://www.youtube.com/watch?v=WR9qCSXJlyY&index=4&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   !!! You can only add or subtract matrices if they are exactly the
+    same shape / size !!! I.e. A 3x3 matrix can only be added to another
+    3x3 matrix! The same for subtraction.
+
+-   To add two matrices, simply add the values of each entry of the
+    exact same locations in the each matrix.
+
+-   Addition of matrix $\mathbf{A}$ and matrix $\mathbf{B}$ is not as
+    sensitive to ordering as multiplication.
+
+-   We can simply say that
+    $\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}$
+
+-   As with simple math, subtraction is the same as multiplying one of
+    the matrices by $(-1)$, which is a scalar. Therefore
+    $\mathbf{A} - \mathbf{B} = \mathbf{B} + (-1) \times \mathbf{A}$
+
+-   Because we know that scalar multiplication ordering is not important
+    (thus, it is commutitive).
+
+### Exercises
+
+[Scalar multiplication, addition and subtraction]{}
+
+1.  Find $\mathbf{A} + \mathbf{B}$, for $$\mathbf{A}=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}
+          , and, \mathbf{B}=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}$$
+
+2.  Find $\mathbf{A} - \mathbf{B}$, for $$\mathbf{A}=
+          \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            8 & 6
+          \end{bmatrix}
+          , and, \mathbf{B}=
+          \begin{bmatrix}
+            \frac{3}{5} & 2\\
+            3 & 4\\
+            5 & \frac{1}{2}
+          \end{bmatrix}$$
+
+3.  Find $x\mathbf{A}$, for
+    $$\mathnormal{x = \frac{1}{2}, and, \mathbf{A}=}
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}$$
+
+Transpose of a matrix {#sec:transpose}
+=====================
+
+### Transpose of a matrix {#transpose-of-a-matrix}
+
+[Taking the transpose]{}
+
+-   [Transpose of a
+    matrix](https://www.youtube.com/watch?v=TZrKrNVhbjI&index=5&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   The transpose of matrix $\mathbf{A}$, can be written as
+    $\mathbf{A}^{T}$
+
+-   Rows become columns! therefore a 3x2 matrix will become a 2x3 matrix
+    if we take the transpose.
+
+-   $$\mathbf{A}=
+          \begin{bmatrix}
+            5 & 2\\
+            8 & 6
+          \end{bmatrix}
+        \mathbf{A}^T=
+          \begin{bmatrix}
+            5 & 3 & 8\\
+            2 & 4 & 6
+          \end{bmatrix}$$
+
+-   Later on this will become a very useful tool!
+
+### Exercises
+
+[Transposes of matrixes]{}
+
+1.  Find the transpose of $\mathbf{A}$, for $$\mathbf{A}=
+          \begin{bmatrix}
+            7 & 14 & -13 \\
+            1 & 2 & 3 \\
+            2221 & 743 & 5
+          \end{bmatrix}$$
+
+2.  Find the transpose of $\mathbf{A}$, plus $\mathbf{B}^{T}$, for
+    $$\mathbf{A}=
+          \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            8 & 6
+          \end{bmatrix}
+          , and, \mathbf{B}=
+          \begin{bmatrix}
+            \frac{1}{3} & 2\\
+            3 & 4\\
+            5 & \frac{4}{5}
+          \end{bmatrix}$$
+
+3.  Find $x \times \mathbf{A}^{T}$, for
+    $$\mathnormal{x = \frac{1}{2}, and, \mathbf{A}=}
+          \begin{bmatrix}
+            a & 2 & v \\
+            3 & z & 5
+          \end{bmatrix}$$
+
+### Data representation
+
+[What can go into a matrix??]{}
+
+-   There are cats and birds, cats have 4 legs, birds have 2. Cats have
+    20 claws, birds have 8. Cats eat once a day, birds eat 5 times.
+
+-   Bob and Dave are friends. If each of them eat food, they gain wait
+    differently. For each kilogram of food, Bob gains 400g, and Dave
+    gains 600g. For each kilometer they run, they each lose weight
+    differently. Bob loses 50g and Dave loses 85g. For each beer they
+    drink, Bob gains 200g, and Dave gains 100g.
+
+-   X and Y are variables, lets call them Bob and Dave’s weight. Both X
+    and Y depend on eating ($a$), running ($b$) and beers ($c$). Write
+    equations for these Bob and Dave’s weight.
+
+-   We now have the coefficients of a system of simultaneos equations
+    stored in a matrix... We’ll get back to this!
+
+Matrix multiplication {#sec:multiplication}
+=====================
+
+### Matrix multiplication {#matrix-multiplication}
+
+[How to do it, and some of why...]{}
+
+-   [Matrix multiplication first
+    look](https://www.youtube.com/watch?v=kT4Mp9EdVqs&index=6&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   Some key concepts
+
+    -   Matrix $\mathbf{A}=m_a\times n_a$, and matrix
+        $\mathbf{B}=m_b\times n_b$, can only be multiplied if the number
+        of columns in $\mathbf{A}$ equal the number of rows in
+        $\mathbf{B}$.
+
+    -   I.e. $\mathbf{AB}$ is only defined if: $n_a = m_b$
+
+    -   I.e. $\mathbf{BA}$ is only defined if: $n_b = m_a$
+
+    -   The dot product. $row \times column$
+
+    -   $\mathbf{A} \times \mathbf{B} \neq \mathbf{B} \times \mathbf{A}$,
+        or simply, $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$
+
+    -   **ORDER MATTERS!!!**
+
+-   [Multiplying a matrix by a matrix ($2\times 3 \cdot 3\times 2$),
+    $\mathbf{AB}$](https://www.youtube.com/watch?v=OMA2Mwo0aZg&index=7&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   [Multiplying a matrix by a vector ($2\times 3 \cdot 3\times 1$),
+    $\mathbf{Aw}$](https://www.youtube.com/watch?v=Awcj447pYuk&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=8)
+
+-   [Defined vs undefined multiplication, some
+    examples.](https://www.youtube.com/watch?v=O1-9f1g0OsI&index=9&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+### Exercises
+
+[Checking the rules]{}
+
+1.  Can we find $\mathbf{A} \times \mathbf{B}$?, for $$\mathbf{A}=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}
+          , and, \mathbf{B}=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}$$
+
+2.  Can we find $\mathbf{A} \times \mathbf{B}$?, for $$\mathbf{A}=
+          \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            8 & 6
+          \end{bmatrix}
+          , and, \mathbf{B}=
+          \begin{bmatrix}
+            \frac{3}{5} & 2\\
+            3 & 4\\
+            5 & \frac{1}{2}
+          \end{bmatrix}$$
+
+3.  Can we find $\mathbf{B} \times \mathbf{A}$?, for $$\mathbf{A}=
+          \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            c & 4
+          \end{bmatrix}
+          , and \quad \mathbf{B} =
+          \begin{bmatrix}
+            \frac{3}{5} & 2 & e34 & 900\\
+            3 & 4 & g & 23\\
+            5 & \frac{1}{2} & i43 & 12
+          \end{bmatrix} or \quad (\mathbf{A}^{T}\mathbf{B}?)$$
+
+### Matrix multiplication {#matrix-multiplication-1}
+
+[Helpful tips]{}
+
+-   When we multiply two matrices, we get the dimensions of the new
+    matrix from the rows of the first matrix and the columns of the
+    second.
+
+-   If, recall the **order** of a matrix is $m\times n$:
+
+-   $\mathbf{A}$ is a $(2 \times 3)$, $(3 \times 4)$ are $\mathbf{B}$’s
+    dimensions
+
+-   We know that we can multiply them because $n_A = m_B = 3$
+
+-   To work out the dimensions of the NEW matrix, after we multiply, we
+    take the number of rows from $\mathbf{A} = m_A = 2$, and the columns
+    from $\mathbf{B}= n_B=4$
+
+-   $$\begin{bmatrix}
+             & \mathbf{A} &\\
+            (m_A & \times & n_A)
+          \end{bmatrix} \times
+          \begin{bmatrix}
+             & \mathbf{B} &\\
+            (m_B & \times & n_B)
+          \end{bmatrix} = 
+            \begin{bmatrix}
+             & \mathbf{AB} &\\
+            (n_A & \times & m_B)
+          \end{bmatrix}$$
+
+### Matrix multiplication {#matrix-multiplication-2}
+
+[Multiplication rules, commutitive / associative]{}
+
+-   Only relevant to ask these questions if multiplication is defined!!
+    Otherwise there is no point.
+
+-   [Matrix multiplication is NOT
+    commutitive!](https://www.youtube.com/watch?v=z-SU7P-gIoQ&index=10&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   That means that ORDER MATTERS.
+
+-   As before, $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$
+
+-   [Matrix multiplication IS
+    associative](https://www.youtube.com/watch?v=8Ryfe82DTcM&index=11&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+
+-   This means that as long as the order stays the same, the sequence
+    does NOT matter!
+
+-   $(\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C})$
+
+The identity matrix {#sec:vectors}
+===================
+
+### The identity matrix {#the-identity-matrix}
+
+[What is it?]{}
+
+-   $\mathbf{I}$ (the identity matrix) is always relative to whatever
+    other matrix we are talking about.
+
+-   $\mathbf{I} \times \mathbf{A}$ refers to the identity matrix of
+    $\mathbf{A}$
+
+-   Any matrix multiplied by the identity matrix is just equal to
+    itself.
+
+-   [The identity
+    matrix](https://www.youtube.com/watch?v=3cnIa0fYJkY&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=13)
+
+-   $$\mathbf{A}=
+          \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            c & 4
+          \end{bmatrix}
+          , and \quad \mathbf{I} \times \mathbf{A} =
+          \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            c & 4
+          \end{bmatrix}$$
+
+### Identity matrices
+
+[What are the dimensions?]{}
+
+-   [Identity matrix
+    dimensions](https://www.youtube.com/watch?v=l7p1X5pdDoc&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=14)
+
+-   Think back to multiplication:
+
+-   Try to work it out:
+
+$$\begin{bmatrix}
+         & \mathbf{I} &\\
+        (? & \times & ?)
+      \end{bmatrix} \times
+      \begin{bmatrix}
+         & \mathbf{B} &\\
+        (2 & \times & 4)
+      \end{bmatrix} = 
+        \begin{bmatrix}
+         & \mathbf{B} &\\
+        (2 & \times & 4)
+      \end{bmatrix}$$ Recall that: $$\begin{bmatrix}
+         & \mathbf{A} &\\
+        (m_A & \times & n_A)
+      \end{bmatrix} \times
+      \begin{bmatrix}
+         & \mathbf{B} &\\
+        (m_B & \times & n_B)
+      \end{bmatrix} = 
+        \begin{bmatrix}
+         & \mathbf{AB} &\\
+        (n_A & \times & m_B)
+      \end{bmatrix}$$
+
+### The identity matrix {#the-identity-matrix-1}
+
+[Working out the shape]{}
+
+-   We know that the dimensions of $\mathbf{B}$ will stay the same. We
+    also know where to find the number of rows and columns of the final
+    product. In this case, we know it will be: $$\begin{bmatrix}
+             & \mathbf{I} &\\
+            (\color{red}{\text{a}} & \times & \color{red}{\text{a}})
+          \end{bmatrix} \times
+          \begin{bmatrix}
+             & \mathbf{B} &\\
+            (\color{red}{\text{a}} & \times & b)
+          \end{bmatrix} = 
+            \begin{bmatrix}
+             & \mathbf{IB} = \mathbf{B} &\\
+            (\color{blue}{\text{a}} & \times & b)
+          \end{bmatrix}$$
+
+-   This way, we know that the number of rows and columns in the
+    identity matrix are identitical. Also known as a SQUARE matrix, the
+    size of which is determined by the order of multiplication.
+
+-   
+
+$$\begin{bmatrix}
+         & \mathbf{B} &\\
+        (a & \times & \textcolor{red}{b})
+      \end{bmatrix} \times
+        \begin{bmatrix}
+         & \mathbf{I} &\\
+        (\textcolor{red}{b} & \times & \textcolor{blue}{b})
+      \end{bmatrix} =
+        \begin{bmatrix}
+         & \mathbf{BI} = \mathbf{B} &\\
+        (a & \times & \textcolor{blue}{b})
+      \end{bmatrix}$$
+
+### The identity matrix {#the-identity-matrix-2}
+
+[Why does this make sense?]{}
+
+-   The identity matrix is therefore ALWAYS a square matrix. We
+    therefore only need to note one of the dimensions when denoting it.
+
+-   For a $2\times 2$ identity matrix: $$\begin{matrix}
+            \mathbf{I}_2
+          \end{matrix}$$
+
+-   For a $5\times 5$ identity matrix, $$\begin{matrix}
+            \mathbf{I}_5
+          \end{matrix}$$
+
+-   Think about how the dot(.)product works in matrix multiplication.
+
+-   Each column by each row, to get each element of the final product.
+
+-   We want all values except 1 in each row/column to be zero. We just
+    need the value to be in the right place!
+
+### Examples and Exercises
+
+[Find the identity matrix for the following:]{}
+
+-   $$\mathbf{A}=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}
+          , and, \mathbf{B}=
+          \begin{bmatrix}
+            1 & 2 & 3 \\
+            1 & 2 & 3 \\
+            3 & 4 & 5
+          \end{bmatrix}$$
+
+The zero matrix {#sec:zero}
+===============
+
+### What about a zero matrix
+
+[What is a vector?]{}
+
+-   [The zero
+    matrix](https://www.youtube.com/watch?v=LOf8bfjiLow&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=15)
+
+-   $\mathbf{A}\times \mathbf{0}$
+
+### What about a zero matrix
+
+[What is a vector?]{}
+
+-   [The zero
+    matrix](https://www.youtube.com/watch?v=LOf8bfjiLow&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=15)
+
+-   $\mathbf{A}\times \mathbf{0}$
+
+### Blank frame
+
+[Blank title?]{}
+
+-   []()
+
+-   
+
+### Blank frame
+
+[Blank title?]{}
+
+-   []()
+
+-   
+
+Matrices and systems of equations {#sec:vectors}
+=================================
+
+### Linear algebra and systems of equations
+
+[Mathematical models of economies]{}
+
+-   Ultimately will involve a system of equations
+
+-   If all are linear, then it is a linear system of equations
+
+-   A generic way to represent a system of equations is:
+    $$\begin{matrix}
+        a_{11}x_1 + & a_{12}x_2 & + & a_{13}x_3 & + & \dots & + & a_{1n}x_n & = & b_1\\
+        a_{21}x_1 + & a_{22}x_2 & + & a_{23}x_3 & + & \dots & + & a_{2n}x_n & = & b_2\\
+        \vdots & \vdots & & \vdots & & \vdots & & \vdots & & \vdots \\
+        a_{m1}x_1 + & a_{m2}x_2 & + & a_{m3}x_3 & + & \dots & + & a_{mn}x_n & = & b_m
+      \end{matrix}$$
+
+-   $a_{11}$ through $a_{mn}$ are *coefficients* of the system of
+    equations
+
+-   Each $x$ value is a different *component*
+
+Leontief models {#sec:Leontief}
+===============
+
+### Leontief Models {#leontief-models}
+
+[Fish, forestry and boat building]{}
+
+-   A highly simplified 3 industry input-output model
+
+-   Boats need wood, wood cutters need fish, fishing needs boats.
+
+-   1 ton fish needs $\alpha$ fishing boats, $(x_1)$
+
+-   1 ton wood needs $\beta$ tons fish, $(x_2)$
+
+-   1 fishing boat needs $\gamma$ tons of wood, $(x_3)$
+
+-   The total gross demand for fish and wood are $(d_1)$ and $(d_2)$,
+    and we want to know, how much needs to be produced of each good in
+    order to meet these two total levels of demand.
+
+### Leontief Models 2
+
+[Fish, forestry and boat building 2]{}
+
+-   Another way to state this is: $x_1$ is the total production of fish,
+    which includes all demand, plus any additional demand caused by
+    production of more wood. $x_2$ is total production of wood, and
+    includes all demand plus all additional demand caused by production
+    of more fishing boats. If we assume that fishing boats will only be
+    produced if more are needed, then $x_3$ includes only increased
+    demand for boats that comes from produciton of fish.
+
+-   This can be written as:
+
+$$\begin{matrix}
+    x_1 & = & \beta x_2 & + & d_1\\
+    x_2 & = & \gamma x_3 & + & d_2\\
+    x_3 & = & \alpha x_1
+  \end{matrix}$$
+
+### Leontief Models 3
+
+[Exercise:]{}
+
+-   Solve for $x_1$, $x_2$ and $x_3$ in terms of $d_1$ and $d_2$, and
+    the coefficients $\alpha$, $\beta$ and $\gamma$.
+
+-   Hint: To start with, substite $x_3 = \alpha x_1$ into
+    $x_2 = \gamma x_3 + d_2$
+
+### Leontief Models 4
+
+[Exercise:]{}
+
+-   The analytical solution for this system is:
+
+-   $x_1 = \frac{d_1 + \beta d_2}{1 - \alpha \beta \gamma}$
+
+-   $x_2 = \frac{\alpha \gamma d_1 + d_2}{1 - \alpha \beta \gamma}$
+
+-   $x_3 = \frac{\alpha d_1 + \alpha \beta d_2}{1 - \alpha \beta \gamma}$
+
+### Leontief Models 5
+
+[Expanding the simple model to a large general model:]{}
+
+Total units of good $i$ needed for one unit of good $j$ = $a_{ij}$,
+where $a_{i}$ is some proportion.
+
+If we let the number of units of good $j = x_{j}$, and we consider that
+each $x$ can be a different good that requires some level of production
+of good $i$, then for $n$ different products,
+
+$$\begin{matrix}
+    a_{ij}x_j + & a_{ij}x_j & + &  \dots & + & a_{in}x_n
+  \end{matrix}$$
+
+If industry $i$ must supply some total level of demand $x_i$, and
+additional demand for good $i = b_i$, then $$\begin{matrix}
+    x_i = a_{ij}x_j + & a_{ij}x_j & + &  \dots & + & a_{in}x_n + b_i
+  \end{matrix}$$
+
+### Leontief Models 6
+
+[Expanding the simple model to a large general model 2:]{}
+
+If we expand the number of industries to $m$ total indistries then we
+get
+
+$$\begin{matrix}
+    x_1 & = & a_{11}x_1 + & a_{12}x_2 & + &  \dots & + & a_{1n}x_n & + & b_1\\
+    x_2 & = & a_{2j}x_j + & a_{2j}x_j & + &  \dots & + & a_{2n}x_n & + & b_2\\
+    \vdots & = & & \vdots & + &  \dots & + & \vdots\\
+    x_n & = & a_{n1}x_1 + & a_{n2}x_2 & + &  \dots & + & a_{nn}x_n & + & b_n
+  \end{matrix}$$
+
+Rearranging all terms with $x$ to the left, and leaving only the
+additional demand component
+
+### Leontief Models 6
+
+[Expanding the simple model to a large general model 2:]{}
+
+Rearranging all terms with an $x$ to the left, and leaving only the
+additional demand component to the right, results in the following:
+
+$$\begin{matrix}
+    (1-a_{11})x_1 & - & a_{12}x_2 & - &  \dots & - & a_{1n}x_n & = & b_1\\
+    -a_{2j}x_1 & + & (1-a_{2j})x_2 & - &  \dots & - & a_{2n}x_n & = & b_2\\
+    \vdots & - & \vdots & + &  \dots & - & \vdots & = & \vdots \\
+    -a_{n1}x_1 & - & a_{n2}x_2 & - &  \dots & + & (1-a_{nn})x_n & = & b_n
+  \end{matrix}$$
+
+[The Leontief system:]{} This means that for a given system of
+equations, and a given level of final demand values, there can be one
+(or more) solutions for the final quantities of $n$ different goods
+\[$x_1:x_n$\], that satisfies \[$b_1:b_n$\].
