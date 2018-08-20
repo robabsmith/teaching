@@ -3,11 +3,15 @@ title: "Mathematics for Economics Lectures"
 author: "Rob Smith"
 date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
 output:
-  pdf_document: default
-  beamer_presentation: default
+  beamer_presentation:
+    theme: "Montpellier"
+    colortheme: "beaver"
+    fonttheme: "serif"
+    slide_level: 1
+urlcolor: red
 ---
 
-Vectors and Matrices {#sec:vectors}
+Vectors and Matrices {#sec:vectmatr}
 ====================
 
 ### Why learn about Matrices??
@@ -385,7 +389,7 @@ Matrix multiplication {#sec:multiplication}
 
 -   $(\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C})$
 
-The identity matrix {#sec:vectors}
+The identity matrix {#sec:identitymatrix}
 ===================
 
 ### The identity matrix {#the-identity-matrix}
@@ -460,15 +464,15 @@ $$\begin{bmatrix}
     also know where to find the number of rows and columns of the final
     product. In this case, we know it will be: $$\begin{bmatrix}
              & \mathbf{I} &\\
-            (\color{red}{\text{a}} & \times & \color{red}{\text{a}})
+            ({\color{blue} a} & \times & {\color{red} a})
           \end{bmatrix} \times
           \begin{bmatrix}
              & \mathbf{B} &\\
-            (\color{red}{\text{a}} & \times & b)
+            ({\color{red} a} & \times & b)
           \end{bmatrix} = 
             \begin{bmatrix}
              & \mathbf{IB} = \mathbf{B} &\\
-            (\color{blue}{\text{a}} & \times & b)
+            ({\color{blue} a} & \times & b)
           \end{bmatrix}$$
 
 -   This way, we know that the number of rows and columns in the
@@ -479,15 +483,15 @@ $$\begin{bmatrix}
 
 $$\begin{bmatrix}
          & \mathbf{B} &\\
-        (a & \times & \textcolor{red}{b})
+        (a & \times & {\color{red} b})
       \end{bmatrix} \times
         \begin{bmatrix}
          & \mathbf{I} &\\
-        (\textcolor{red}{b} & \times & \textcolor{blue}{b})
+        ({\color{red} b} & \times & {\color{blue} b})
       \end{bmatrix} =
         \begin{bmatrix}
          & \mathbf{BI} = \mathbf{B} &\\
-        (a & \times & \textcolor{blue}{b})
+        (a & \times & {\color{blue} b})
       \end{bmatrix}$$
 
 ### The identity matrix {#the-identity-matrix-2}
@@ -565,7 +569,7 @@ The zero matrix {#sec:zero}
 
 -   
 
-Matrices and systems of equations {#sec:vectors}
+Matrices and systems of equations {#sec:systemsofeq}
 =================================
 
 ### Linear algebra and systems of equations
@@ -706,4 +710,4 @@ $$\begin{matrix}
 [The Leontief system:]{} This means that for a given system of
 equations, and a given level of final demand values, there can be one
 (or more) solutions for the final quantities of $n$ different goods
-\[$x_1:x_n$\], that satisfies \[$b_1:b_n$\].
+$x_1:x_n$, that satisfies $b_1:b_n$.
