@@ -8,7 +8,6 @@ output:
     colortheme: "seahorse"
     fonttheme: "serif"
     slide_level: 3
-    toc: true
   bookdown::gitbook:
     config:
       toc:
@@ -138,7 +137,7 @@ $$
 - Just a **very useful** and **very powerful** way to store information.
 - Matrices are always denoted with a **bold** letter, such as **A**, **B**, or **M**.
 - [Khan Academy: Pre-calculus course on matrices](https://www.khanacademy.org/math/precalculus/precalc-matrices)
-- [Khan Academy: Intro - what is a matrix??](https://www.youtube.com/watch?v=0oGJTQCy4cQ&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=1)
+- [Khan Academy: Introduction what is a matrix??](https://www.youtube.com/watch?v=0oGJTQCy4cQ&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=1)
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -211,12 +210,12 @@ letter (lower-case) and all matrices with a capital
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-### The commutitive and associative laws
+### The commutative and associative laws
 - If $x$ is a scalar (number), and $\mathbf{A}$ is a matrix, then $$x \times \mathbf{A} = \mathbf{A} \times x$$
-- Or simply, $x\mathbf{A} = \mathbf{A}x$, thus **scalar multuplication** IS commutitive.
+- Or simply, $x\mathbf{A} = \mathbf{A}x$, thus **scalar multiplication** IS commutative.
 - When used for addition or subtraction, scalars can be imagined as simple numbers, to be added or subtracted from each of the entries in a matrix.
 - Therefore, the order does not matter too much. $$x + \mathbf{A} = \mathbf{A} + x$$, and $$\mathbf{A} - x = -x + \mathbf{A}$$
-- Scalar addition, subtraction and multiplicaiton *ARE ALL* commutitive and associative.
+- Scalar addition, subtraction and multiplication *ARE ALL* commutative and associative.
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -237,9 +236,9 @@ letter (lower-case) and all matrices with a capital
 ### Addition and subtraction rules
 - To add two matrices, simply add the values of each entry of the exact same locations in the each matrix.
 - Also, $$\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}$$
-- As with simple math, subtraction is the same as multiplying one of the matrices by $(-1)$, which is a scalar. Therefore 
+- As with simple algebra, subtraction is the same as multiplying one of the matrices by $(-1)$, which is a scalar. Therefore 
 $$\mathbf{A} - \mathbf{B} = (-1)\mathbf{B} + \mathbf{A}$$
-- Because we know that scalar multiplication ordering is not important (stated differently: it is commutitive).
+- Because we know that scalar multiplication ordering is not important (stated differently: it is commutative).
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -366,14 +365,14 @@ $$
 
 ### Data representation exercise
 1. There are cats and birds, cats have 4 legs, birds have 2. Cats have 20 claws, birds have 8. Cats eat once a day, birds eat 5 times.
-2. Bob and Dave are friends. If each of them eat food, they gain wait differently. For each kilogram of food, Bob gains 400g, and Dave gains 600g. For each kilometer they run, they each lose weight differently. Bob loses 50g and Dave loses 85g. For each beer they drink, Bob gains 200g, and Dave gains 100g.
+2. Bob and Dave are friends. If each of them eat food, they gain wait differently. For each kilogram of food, Bob gains 400g, and Dave gains 600g. For each kilometre they run, they each lose weight differently. Bob loses 50g and Dave loses 85g. For each beer they drink, Bob gains 200g, and Dave gains 100g.
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### ... continued
 3. X and Y are variables, lets call them Bob and Dave's weight. Both X and Y depend on eating ( a ), running ( b ) and beers ( c ). Write equations for these Bob and Dave's weight.
-- We now have the coefficients of a system of simultaneos equations stored in a matrix... We'll get back to this!
+- We now have the coefficients of a system of simultaneous equations stored in a matrix... We'll get back to this!
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -429,7 +428,7 @@ $$
 - $$\mathbf{A} \times \mathbf{B} \neq \mathbf{B} \times \mathbf{A}$$, or simply, $$\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$$
 - [Multiplying a matrix by a vector](https://www.youtube.com/watch?v=Awcj447pYuk&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=8) ($2\times 3 \cdot 3\times 1$), $\mathbf{Aw}$
 - [Multiplying a matrix by a matrix](https://www.youtube.com/watch?v=OMA2Mwo0aZg&index=7&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH) ($2\times 3 \cdot 3\times 2$), $\mathbf{AB}$
-- [Defined vs undefined multiplication, some examples](https://www.youtube.com/watch?v=O1-9f1g0OsI&index=9&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH).
+- [Defined vs. undefined multiplication, some examples](https://www.youtube.com/watch?v=O1-9f1g0OsI&index=9&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH).
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -437,17 +436,17 @@ $$
 ### Exercises
 1. If possible, find $\mathbf{A} \times \mathbf{B}$?, for
 $$
-        \mathbf{A}=
-          \begin{bmatrix}
-            1 & 2 & 3 \\
-            3 & 4 & 5
-          \end{bmatrix}
-          , and, \mathbf{B}=
-          \begin{bmatrix}
-            1 & 2 & 3 \\
-            1 & 2 & 3 \\
-            3 & 4 & 5
-          \end{bmatrix}
+\mathbf{A}=
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    3 & 4 & 5
+  \end{bmatrix}
+  , and, \mathbf{B}=
+  \begin{bmatrix}
+    1 & 2 & 3 \\
+    1 & 2 & 3 \\
+    3 & 4 & 5
+  \end{bmatrix}
 $$
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -456,41 +455,41 @@ $$
 ### Exercises continued ...
 2. If possible, find $\mathbf{A} \times \mathbf{B}$?, for
 $$
-        \mathbf{A}=
-          \begin{bmatrix}
-            5 & 2\\
-            3 & 4\\
-            8 & 6
-          \end{bmatrix}
-          , and, \mathbf{B}=
-          \begin{bmatrix}
-            \frac{3}{5} & 2\\
-            3 & 4\\
-            5 & \frac{1}{2}
-          \end{bmatrix}
+\mathbf{A}=
+  \begin{bmatrix}
+    5 & 2\\
+    3 & 4\\
+    8 & 6
+  \end{bmatrix}
+  , and, \mathbf{B}=
+  \begin{bmatrix}
+    \frac{3}{5} & 2\\
+    3 & 4\\
+    5 & \frac{1}{2}
+  \end{bmatrix}
 $$
 3. If possible, find $\mathbf{B} \times \mathbf{A}$?, for
 $$
-        \mathbf{A}=
-          \begin{bmatrix}
-            5 & 2\\
-            3 & 4\\
-            c & 4
-          \end{bmatrix}
-          , and \quad \mathbf{B} =
-          \begin{bmatrix}
-            \frac{3}{5} & 2 & e34 & 900\\
-            3 & 4 & g & 23\\
-            5 & \frac{1}{2} & i43 & 12
-          \end{bmatrix}
+\mathbf{A}=
+  \begin{bmatrix}
+    5 & 2\\
+    3 & 4\\
+    c & 4
+  \end{bmatrix}
+  , and \quad \mathbf{B} =
+  \begin{bmatrix}
+    \frac{3}{5} & 2 & e34 & 900\\
+    3 & 4 & g & 23\\
+    5 & \frac{1}{2} & i43 & 12
+  \end{bmatrix}
 $$
 4. For (3) above if possible find $\mathbf{B}^{T}\mathbf{A}?$
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-### Matrix multiplication: Non-commutitive rule
-- [Matrix multiplication is NOT commutitive!](https://www.youtube.com/watch?v=z-SU7P-gIoQ&index=10&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+### Matrix multiplication: Non-commutative rule
+- [Matrix multiplication is NOT commutative!](https://www.youtube.com/watch?v=z-SU7P-gIoQ&index=10&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
 - That means that **ORDER MATTERS**.
 - As before, $$\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$$
 
@@ -500,7 +499,6 @@ $$
 ### Summary of rules
 $\mathbf{A} = (a_{ij})_{m\times n}$ and $\mathbf{B} = (b_{ij})_{m\times n}$ and 
 $\mathbf{C} = (c_{ij})_{m\times n}$ are $m\times n$ matrices, and $\delta$, $\alpha$ and $\beta$ are scalars (real numbers).
-
 - $\mathbf{A} + \mathbf{B} = (a_{ij}+b_{ij})_{m\times n}$
 - $\delta \mathbf{A} = (\delta a_{ij})_{m\times n}$
 - $\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}$
@@ -523,12 +521,17 @@ $\mathbf{C} = (c_{ij})_{m\times n}$ are $m\times n$ matrices, and $\delta$, $\al
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 ## The identity matrix
 ### Some simple algebraic comparisons
 - In regular algebra, for any real number, $a\times 1 = 1$
-- In matrices there is a similar concept, called [The Identity Matrix](https://www.youtube.com/watch?v=3cnIa0fYJkY&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=13) , denoted by $\mathbf{I}$.
+- In matrices there is a similar concept, called
+[The Identity Matrix](https://www.youtube.com/watch?time_continue=297&v=iUQR0enP7RQ) , denoted by $\mathbf{I}$.
 - Like the number 1 in normal algebra, in matrices, $\mathbf{I} \times\mathbf{A} = \mathbf{A}$
 - Also, $\mathbf{A} \times \mathbf{I} = \mathbf{A}$, but will the dimensions of $\mathbf{I}$ be the same?
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### An illustration
 - To illustrate the concept, we will find the identity matrix for:
@@ -540,6 +543,9 @@ $$
     c & 4 & 7
 \end{bmatrix}
 $$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### How should it look and how does it work?
 - Using matrix multiplication rules, rows by columns:
@@ -563,9 +569,11 @@ $$
         c & 4 & 7
     \end{bmatrix}
 $$
-- What would that *Indentity Matrix* need to look like?
+- What would that *Identity Matrix* need to look like?
 - Think back to **vector multiplication**...
 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### It is actually quite simple
 - $\mathbf{I}$ for any matrix can therefore be found VERY easily.
@@ -573,6 +581,9 @@ $$
 - Think about how the dot(.)product works in matrix multiplication.
 - Each column by each row, to get each element of the final product.
 - We want all values except 1 in each row/column to be zero. We just need the value to be in the right place!
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### What does this look like?
 $$
@@ -595,7 +606,6 @@ $$
         0 & 0 & 0 & 1
     \end{bmatrix}
 $$
-
 $$
 \mathbf{I}_n =
     \begin{bmatrix}
@@ -611,9 +621,11 @@ $$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### To calculate the dimensions (or, *n*)
-- To calculate the [dimensions](https://www.youtube.com/watch?v=l7p1X5pdDoc&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=14)
-, we must remember how multiplication works.
-- If we know the end result, then we can work out the origins:
+#### Essentially a square matrix with "1"s down the main diagonal
+- To calculate the [dimensions](https://www.youtube.com/watch?v=l7p1X5pdDoc&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=14),
+we must remember how multiplication works.
+
+#### If we know the end result, then we can work out the origins:
 $$
     \begin{bmatrix}
          & \mathbf{I} &\\
@@ -683,7 +695,7 @@ $$
 - This means that the identity matrix has exactly the same number of rows as it has columns.
 - The identity matrix is therefore always **a square matrix**.
 - We denote a $2 \times 2$ identity matrix as $\mathbf{I}_2$
-- In the general example above, The identiy matrix is therefore $\mathbf{I}_a$
+- In the general example above, The identity matrix is therefore $\mathbf{I}_a$
 - We also know that the **order matters!!!!**
 
 
@@ -691,7 +703,13 @@ $$
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### Identify the dimensions of **I**: Changing the order
-- Try to find the general rule for the identy matrix for $\mathbf{BI}$.
+#### Most Importantly, $\mathbf{I} \approx 1$
+- Therefore, in terms of scalar multiplication $$\mathbf{IB} = 1\times \mathbf{B}$$
+- Thus,
+$$\mathbf{IB} = \mathbf{BI} = 1\times \mathbf{B} = \mathbf{B}\times 1 = \mathbf{B}$$
+
+#### Thought Exercise
+- Try to find the general rule for the identity matrix for $\mathbf{BI}$.
 $$
 \begin{bmatrix}
         & \mathbf{B}    &       \\
@@ -715,6 +733,8 @@ $$
 - From multiplication, the number of rows in $\mathbf{BI}$ must come from $m_\mathbf{B}$.
 - To work out what $\mathbf{I}$'s dimensions are we can again get them from the final result. This time, $\color{blue}{n_\mathbf{BI}} = \color{blue}{n_\mathbf{I}}$, but to get $\mathbf{BI}=\mathbf{B}$, it must also be true that $\color{blue}{n_\mathbf{BI}} = \color{red}{n_\mathbf{B}}$, and therefore, $\color{blue}{n_\mathbf{I}} = \color{blue}{n_\mathbf{BI}} = \color{red}{n_\mathbf{B}}$.
 - From multiplication, we know that $\mathbf{BI}$ is only defined if $\color{red}{n_\mathbf{B}}=\color{red}{m_\mathbf{I}}$.
+
+### ... continued
 - Therefore, the number of rows in $\mathbf{I}$ must equal number of columns in $\mathbf{B}$.
 - So, $\color{red}{n_\mathbf{B}} = \color{red}{m_\mathbf{I}}$.
 $$
@@ -731,14 +751,15 @@ $$
     (a & \times & \color{blue}{b})
 \end{bmatrix}
 $$
-- For the new ordering of the multiplication, the identiy matrix is therefore $\mathbf{I}_b$
-
+- For the new ordering of the multiplication, the identity matrix is therefore $\mathbf{I}_b$.
+#### What matters is that the result is the same!!
+$$\mathbf{IB} = \mathbf{BI} = \mathbf{B}$$
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 ### Exercises
-1. Find the identity matrix for $\mathbf{F}$, for
+1. Find the identity matrix for $\mathbf{IF}$, for
 $$
 \mathbf{F}=
   \begin{bmatrix}
@@ -787,9 +808,9 @@ $$
 
 ## The zero matrix
 ### Algebraic comparisons
-- In standard algerbra we can multiply a real number by zero, and the result is 0. So, $$a \times 0 = 0$$
+- In standard algebra we can multiply a real number by zero, and the result is 0. So, $$a \times 0 = 0$$
 - Again we can do something similar with matrices, called the [zero matrix](https://www.youtube.com/watch?v=LOf8bfjiLow&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=15).
-- The differnce: this time we want a matrix the same size as we started out with, but with all values equal to zero.
+- The difference: this time we want a matrix the same size as we started out with, but with all values equal to zero.
 - We denote the zero matrix as a bold zero, $\mathbf{0}$. So in matrix terms, matrix $$\mathbf{A} \times  \mathbf{0} = \mathbf{0}$$
 - What dimensions do you expect the zero matrix to have?
 
@@ -799,164 +820,10 @@ $$
 ### Usefulness and dimensions
 - What is most important is understanding the operation. Where, $$\mathbf{B} \times  \mathbf{0} = \mathbf{0}$$, and $$\mathbf{0} \times  \mathbf{A} = \mathbf{0}$$, and $$\mathbf{AB} \times  \mathbf{0} = \mathbf{0}$$
 - In terms of dimensions, we can just use a square matrix (like the identity matrix), but just make all elements equal to "0".
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Usefulness and dimensions
 - But, the zero matrix used in multiplication does not need to be square. It only needs to satisfy the rules of matrix multiplication. $$n_A = m_B$$
 - The dimensions of the resulting zero matrix will then depend on original matrix and the size chosen for the zero matrix.
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-# Determinants and Matrix Inversion
-## Economic application
-### Applying algebra to systems of equations
-#### What are we learning all of these operations for?
-- We really want to be able to solve a system of equations!
-- What do we need to be able to do that??
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Ultimately we need the inverse matrix!!
-#### Why?
-- If we look at the system of equations we introduced at the beginning.
-$$
-    \begin{bmatrix}
-        a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
-        a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
-        \vdots & \vdots & \vdots & \ddots & \vdots\\
-        a_{m1} & a_{m2} & a_{m3} & \dots & a_{mn}
-    \end{bmatrix}
-    \cdot
-    \begin{bmatrix}
-        x_1\\
-        x_2\\
-        \vdots\\
-        x_n
-    \end{bmatrix} =
-    \begin{bmatrix}
-        b_1\\
-        b_2\\
-        \vdots\\
-        b_m
-    \end{bmatrix}
-$$
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Then rewrite the matrix and two vectors:
-- We can replace the matrix of coefficients with some generic letter for the matrix, lets call it $\mathbf{A}$, and then we can do the same for the vector of variables ($\mathbf{\overrightarrow{x}}$), and the results vector on the right ($\mathbf{\overrightarrow{b}}$). Then we have $$\mathbf{A\overrightarrow{x}} = \mathbf{\overrightarrow{b}}$$
-- Or just, $$\mathbf{Ax} = \mathbf{b}$$
-- We must get $\mathbf{A}$ to the other side!!!
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Then re-arrange the variables:
-- If we know the values for $\mathbf{\overrightarrow{b}}$, and,
-- If we want to find a solution for all values for our unknowns (the $\mathbf{x}$ vector), we somehow need to get the matrix $\mathbf{A}$ to the right-hand side of our equation.
-- If $\mathbf{A}$ was just a regular variable, $j$, we could just divide both sides by $j$.
-- This could also be written as both sides multiplied by $j^{-1}$. We would want something like: $$\overrightarrow{x} = \mathbf{A^{-1}\overrightarrow{b}}$$
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Dividing by a matrix is not possible!! But...
-- In matrices, there is a very similar concept, except that: $$\mathbf{A^{-1}A} = \mathbf{I}$$
-- Where $\mathbf{I}$ is the Identity matrix!!!
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Dividing both sides by a matrix not possible:
-- Just as $j^{-1}j = \frac{j}{j}=1$
-- $\mathbf{A^{-1}A} = \mathbf{I}$, where $\mathbf{I}$ is the Identity matrix!!!
-- We can therefore rewrite: $$\mathbf{Ax} = \mathbf{b}$$
-- As: $$\mathbf{A^{-1}Ax} = \mathbf{A^{-1}b}$$
-- because we know that $$\mathbf{A^{-1}A} = \mathbf{I}$$
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Multiplying by the inverse is equal to **I**
-- And any matrix multiplied by the identity matrix is just equal to the original matrix.
-- We can write $$\mathbf{Ix} = \mathbf{A^{-1}b}$$
-- Which is the same as: $$\mathbf{x} = \mathbf{A^{-1}b}$$
-- In this way, if we can find the **inverse** of a matrix:
-- For any set of outcomes, $\mathbf{b}$, 
-- We can find a solution for all variables in the vector $\mathbf{x}$.
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Great! So how do we get the inverse?
-#### Here I highly recommend you watch some videos!!
-- The inverse, is that one specific matrix, that if we find the **dot product** of it with our original matrix, we get the **identity matrix**.
-- There are a few ways that we can do this, but the methods all boil down to being able to this equation: $$\mathbf{A}^{-1} = \frac{1}{|A|}(adj.(\mathbf{A}))$$
-- Where $|A|$, is the determinant of matrix $\mathbf{A}$, and
-- Where, $adj.(\mathbf{A})$ is the adjugate matrix of matrix $\mathbf{A}$.
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### The adjugate
-- We also have an equation to tell us how to work out the adjugate of $\mathbf{A}$, it is: $$adj.(\mathbf{A}) = \mathbf{C}^{T}$$
-- Where, $\mathbf{C}^{T}$ is the **transpose** of the **coefficient matrix** of $\mathbf{A}$.
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Ingredients to the inverse
-\begin{block}{The Adjugate}
-\end{block}
-- Which includes:
-    1. The coefficient matrix ($\mathbf{C}^{T}$)
-    2. A tranpose transformation 
-    
-\begin{block}{The Coefficient Matrix}
-\end{block}
-
-\begin{block}{The Determinant}
-\end{block}
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Context of the course
-\begin{tikzpicture}[sibling distance=5em,
-                    every node/.style = {shape=rectangle, rounded corners,
-                    draw, align=center,
-                    top color=white, bottom color=blue!20}]]
-    \node {Solve a Model}
-    child {node {Inverse}
-        child {node {Ident.}}
-        child {node {Adj.}}
-        child {node {Det.}
-            child {node {Add}
-                child {node {Scalar / Vector}}}
-            child {node {Subtr.}}
-            child {node {Multi.}
-                child {node {Scalar / Vector}}}
-            child {node {Transp.}}}};
-\end{tikzpicture}
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### The adjugate
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### The adjugate
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-

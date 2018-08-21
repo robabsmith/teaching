@@ -1,0 +1,283 @@
+---
+title: "Mathematics for Economics: Semester 1, Part 2"
+author: "Rob Smith"
+date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
+output:
+  beamer_presentation:
+    theme: "Berkeley"
+    colortheme: "seahorse"
+    fonttheme: "serif"
+    slide_level: 3  
+  bookdown::gitbook:
+    config:
+      toc:
+        collapse: section
+    self.contained: yes
+    split_by: none
+urlcolor: red
+header-includes: 
+  - \usepackage{tikz}
+  - \usepackage{pgfplots}
+  - \usepackage{fontawesome5}
+  - \usepackage{academicons}
+  - \usetikzlibrary{calc,matrix}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include=FALSE)
+```
+
+# Determinants and Matrix Inversion
+## Economic application
+### Applying algebra to systems of equations
+#### What are we learning all of these operations for?
+- We really want to be able to solve a system of equations!
+- What do we need to be able to do that??
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Ultimately we need the inverse matrix!!
+#### Why?
+- If we look at the system of equations we introduced at the beginning.
+$$
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
+        a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
+        \vdots & \vdots & \vdots & \ddots & \vdots\\
+        a_{m1} & a_{m2} & a_{m3} & \dots & a_{mn}
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        x_1\\
+        x_2\\
+        \vdots\\
+        x_n
+    \end{bmatrix} =
+    \begin{bmatrix}
+        b_1\\
+        b_2\\
+        \vdots\\
+        b_m
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Then rewrite the matrix and two vectors:
+- We can replace the matrix of coefficients with some generic letter for the matrix, lets call it $\mathbf{A}$, and then we can do the same for the vector of variables ($\mathbf{\overrightarrow{x}}$), and the results vector on the right ($\mathbf{\overrightarrow{b}}$). Then we have $$\mathbf{A\overrightarrow{x}} = \mathbf{\overrightarrow{b}}$$
+- Or just, $$\mathbf{Ax} = \mathbf{b}$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Then re-arrange the variables:
+- If we know the values for $\mathbf{\overrightarrow{b}}$, and,
+- If we want to find a solution for all values for our unknowns (the $\mathbf{x}$ vector), we somehow need to get the matrix $\mathbf{A}$ to the right-hand side of our equation.
+- If $\mathbf{A}$ was just a regular variable, $j$, we could just divide both sides by $j$.
+- This could also be written as both sides multiplied by $j^{-1}$. We would want something like: $$\overrightarrow{x} = \mathbf{A^{-1}\overrightarrow{b}}$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Dividing by a matrix is not possible!! But...
+- In matrices, there is a very similar concept, except that: $$\mathbf{A^{-1}A} = \mathbf{I}$$
+- Where $\mathbf{I}$ is the Identity matrix!!!
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Dividing both sides by a matrix not possible:
+- Just as $j^{-1}j = \frac{j}{j}=1$
+- $\mathbf{A^{-1}A} = \mathbf{I}$, where $\mathbf{I}$ is the Identity matrix!!!
+- We can therefore rewrite: $$\mathbf{Ax} = \mathbf{b}$$
+- As: $$\mathbf{A^{-1}Ax} = \mathbf{A^{-1}b}$$
+- because we know that $$\mathbf{A^{-1}A} = \mathbf{I}$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Multiplying by the inverse is equal to **I**
+- And any matrix multiplied by the identity matrix is just equal to the original matrix.
+- We can write $$\mathbf{Ix} = \mathbf{A^{-1}b}$$
+- Which is the same as: $$\mathbf{x} = \mathbf{A^{-1}b}$$
+- In this way, if we can find the **inverse** of a matrix:
+- For any set of outcomes, $\mathbf{b}$, 
+- We can find a solution for all variables in the vector $\mathbf{x}$.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Great! So how do we get the inverse?
+#### Here I highly recommend you watch some videos!!
+- The inverse, is that one specific matrix, that if we find the **dot product** of it with our original matrix, we get the **identity matrix**.
+- There are a few ways that we can do this, but the methods all boil down to being able to this equation: $$\mathbf{A}^{-1} = \frac{1}{|A|}(adj.(\mathbf{A}))$$
+- Where $|A|$, is the determinant of matrix $\mathbf{A}$, and
+- Where, $adj.(\mathbf{A})$ is the adjugate matrix of matrix $\mathbf{A}$.
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### The adjugate
+- We also have an equation to tell us how to work out the adjugate of $\mathbf{A}$, it is: $$adj.(\mathbf{A}) = \mathbf{C}^{T}$$
+- Where, $\mathbf{C}^{T}$ is the **transpose** of the **coefficient matrix** of $\mathbf{A}$.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Ingredients to the inverse
+\begin{block}{The Adjugate}
+\end{block}
+- Which includes:
+    1. The coefficient matrix ($\mathbf{C}^{T}$)
+    2. A tranpose transformation 
+
+\begin{block}{The Determinant}
+\end{block}
+- This is an area that we still need to explore!
+- The [geometric intuition](https://www.youtube.com/watch?v=Ip3X9LOh2dk&index=6&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+is very useful! (Although it may make your brain squeal)
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Context of the course
+\begin{tikzpicture}[sibling distance=5em,
+                    every node/.style = {shape=rectangle, rounded corners,
+                    draw, align=center,
+                    top color=white, bottom color=blue!20}]]
+    \node {Solve a Model}
+    child {node {Inverse}
+        child {node {Ident.}}
+        child {node {Adj.}}
+        child {node {Det.}
+            child {node {Add}
+                child {node {Scalar / Vector}}}
+            child {node {Subtr.}}
+            child {node {Multi.}
+                child {node {Scalar / Vector}}}
+            child {node {Transp.}}}};
+\end{tikzpicture}
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+## Dot products and cross products
+### Dot and Cross products - Advanced Understanding
+#### The dot product
+- [Geometric intuition](https://www.youtube.com/watch?v=LyGKycYT2v0&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=9)
+- You will need to watch the first 8 videos first to follow this video.
+
+#### The cross product
+- [Geometric intuition](https://www.youtube.com/watch?v=LyGKycYT2v0&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=10)
+- Again, you will need to watch the previous videos in the series.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+## Determinant for a $2x2$ matrix
+### The determinant
+#### Notation
+-   For matrix $\mathbf{A}$, this would be denoted as det($\mathbf{A}$), or $|\mathbf{A}|$
+
+### Calculating the determinant in a $2\times 2$ matrix
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+$$
+
+- The determinant is equal to:
+- The product of the diagonal that goes **top-left** to **bottom-right**,
+minus
+- The product of the diagonal that goes from *bottom-left* to *top-right*.
+- This is equivalent to: $(a_{11}\cdot a_{22}) - (a_{21}\cdot a_{12})$ 
+       \begin{tikzpicture}[
+        strip/.style = {
+            draw=####1,
+            line width=1em, opacity=0.2,
+            line cap=round,
+                                    },
+                            ]
+        \matrix (mtrx)  [matrix of math nodes,
+                         column sep=1em,   
+                         nodes={text height=2ex,text width=2ex},
+                         ampersand replacement=\&]
+        {
+        |[red]|+
+            \& |[blue]|-\\
+        a_{11} \& a_{12}  \\
+        a_{21} \& a_{22}  \\
+        };
+        \draw[thick] (mtrx-2-1.north) -| (mtrx-3-1.south west) 
+                                      -- (mtrx-3-1.south);
+        \draw[thick] (mtrx-2-2.north) -| (mtrx-3-2.south east)
+                                      -- (mtrx-3-2.south);
+        \path[draw,strip=red,shorten <=-1mm]
+            (mtrx-2-1.center) edge (mtrx-3-2.center);
+        \path[draw,strip=blue,shorten >=-1mm]
+            (mtrx-3-1.center) edge (mtrx-2-2.center);
+        \end{tikzpicture}
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Determinant for a $3x3$  matrix
+
+
+
+
+
+### Determinants of order 3
+#### Sarrus' rule
+
+\begin{tikzpicture}[
+strip/.style = {
+    draw=####1,
+    line width=1em, opacity=0.2,
+    line cap=round,
+                            },
+                    ]
+\matrix (mtrx)  [matrix of math nodes,
+                 column sep=1em,   
+                 nodes={text height=2ex,text width=2ex},
+                 ampersand replacement=\&]
+{
+|[red]|+
+    \& |[red]|+
+          \& \color{red}+\color{blue}- 
+                \& |[blue]|- 
+                      \& |[blue]|-   \\
+a_1 \& b_1 \& c_1 \& a_1 \& b_1   \\
+a_2 \& b_2 \& c_2 \& a_2 \& b_2   \\
+a_3 \& b_3 \& c_3 \& a_3 \& b_3   \\
+};
+\draw[thick] (mtrx-2-1.north) -| (mtrx-4-1.south west) 
+                              -- (mtrx-4-1.south);
+\draw[thick] (mtrx-2-3.north) -| (mtrx-4-3.south east)
+                              -- (mtrx-4-3.south);
+\path[draw,strip=red,shorten <=-1mm]
+    (mtrx-4-1.center) edge (mtrx-2-3.center)
+    (mtrx-4-2.center) edge (mtrx-2-4.center)
+    (mtrx-4-3.center)  --  (mtrx-2-5.center);
+\path[draw,strip=blue,shorten >=-1mm]
+    (mtrx-2-1.center) edge (mtrx-4-3.center)
+    (mtrx-2-2.center) edge (mtrx-4-4.center)
+    (mtrx-2-3.center)  --  (mtrx-4-5.center);
+
+\end{tikzpicture}
+
+### Matrix multiplication
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
