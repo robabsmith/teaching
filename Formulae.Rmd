@@ -105,14 +105,10 @@ knitr::opts_chunk$set(echo = TRUE)
 \draw[red,->] (x) to node[arrow style plus] {$+$} (y)%
                   to node[arrow style plus] {$+\raisebox{.5ex}{\ldots}+$} (z)%
                   to (C-2-2.north west);
-
-
 \node [draw,below=10pt] at (C.south) 
     {$ C=A\times B$ : \textcolor{red}{$n$ rows}  \textcolor{red}{$q$ columns}};
-
 \end{tikzpicture}
-- Author : Alain Matthes
-- Source : http://altermundus.com/pages/examples.html
+- Source : Alain Matthes, http://altermundus.com/pages/examples.html
 
 ## Multiplication
 $\mathbf{A} = (a_{ij})_{m\times n}$ and $\mathbf{B} = (b_{ij})_{m\times n}$ and 
