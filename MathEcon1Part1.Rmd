@@ -752,6 +752,7 @@ $$
 \end{bmatrix}
 $$
 - For the new ordering of the multiplication, the identity matrix is therefore $\mathbf{I}_b$.
+
 #### What matters is that the result is the same!!
 $$\mathbf{IB} = \mathbf{BI} = \mathbf{B}$$
 

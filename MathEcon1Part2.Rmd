@@ -93,6 +93,7 @@ $$
 - $\mathbf{A^{-1}A} = \mathbf{I}$, where $\mathbf{I}$ is the Identity matrix!!!
 - We can therefore rewrite: $$\mathbf{Ax} = \mathbf{b}$$
 - As: $$\mathbf{A^{-1}Ax} = \mathbf{A^{-1}b}$$
+- Notice: **The order matters!!**
 - because we know that $$\mathbf{A^{-1}A} = \mathbf{I}$$
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -102,83 +103,55 @@ $$
 - And any matrix multiplied by the identity matrix is just equal to the original matrix.
 - We can write $$\mathbf{Ix} = \mathbf{A^{-1}b}$$
 - Which is the same as: $$\mathbf{x} = \mathbf{A^{-1}b}$$
-- In this way, if we can find the **inverse** of a matrix:
+- In this way, **if we can find the inverse** of a matrix:
 - For any set of outcomes, $\mathbf{b}$, 
 - We can find a solution for all variables in the vector $\mathbf{x}$.
 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+
+## Ingredients to calculate the inverse
 ### Great! So how do we get the inverse?
 #### Here I highly recommend you watch some videos!!
+- [Khan academy](https://www.khanacademy.org/math/precalculus/precalc-matrices/intro-to-matrix-inverses/v/inverse-matrix-part-1), []
 - The inverse, is that one specific matrix, that if we find the **dot product** of it with our original matrix, we get the **identity matrix**.
-- There are a few ways that we can do this, but the methods all boil down to being able to this equation: $$\mathbf{A}^{-1} = \frac{1}{|A|}(adj.(\mathbf{A}))$$
+- There are a few ways that we can do this, but the methods all boil down to being able to solve this equation: $$\mathbf{A}^{-1} = \frac{1}{|A|}(adj.(\mathbf{A}))$$
 - Where $|A|$, is the determinant of matrix $\mathbf{A}$, and
-- Where, $adj.(\mathbf{A})$ is the adjugate matrix of matrix $\mathbf{A}$.
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### The adjugate
-- We also have an equation to tell us how to work out the adjugate of $\mathbf{A}$, it is: $$adj.(\mathbf{A}) = \mathbf{C}^{T}$$
-- Where, $\mathbf{C}^{T}$ is the **transpose** of the **coefficient matrix** of $\mathbf{A}$.
+- Where, $adj.(\mathbf{A})$ is the adjudicate matrix of $\mathbf{A}$.
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-### Ingredients to the inverse
-\begin{block}{The Adjugate}
-\end{block}
-- Which includes:
-    1. The coefficient matrix ($\mathbf{C}^{T}$)
-    2. A tranpose transformation 
-
-\begin{block}{The Determinant}
-\end{block}
-- This is an area that we still need to explore!
-- The [geometric intuition](https://www.youtube.com/watch?v=Ip3X9LOh2dk&index=6&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
-is very useful! (Although it may make your brain squeal)
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-### Context of the course
-\begin{tikzpicture}[sibling distance=5em,
-                    every node/.style = {shape=rectangle, rounded corners,
-                    draw, align=center,
-                    top color=white, bottom color=blue!20}]]
-    \node {Solve a Model}
-    child {node {Inverse}
-        child {node {Ident.}}
-        child {node {Adj.}}
-        child {node {Det.}
-            child {node {Add}
-                child {node {Scalar / Vector}}}
-            child {node {Subtr.}}
-            child {node {Multi.}
-                child {node {Scalar / Vector}}}
-            child {node {Transp.}}}};
-\end{tikzpicture}
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-## Dot products and cross products
-### Dot and Cross products - Advanced Understanding
-#### The dot product
-- [Geometric intuition](https://www.youtube.com/watch?v=LyGKycYT2v0&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=9)
-- You will need to watch the first 8 videos first to follow this video.
-
-#### The cross product
-- [Geometric intuition](https://www.youtube.com/watch?v=LyGKycYT2v0&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=10)
-- Again, you will need to watch the previous videos in the series.
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-## Determinant for a $2x2$ matrix
 ### The determinant
-#### Notation
--   For matrix $\mathbf{A}$, this would be denoted as det($\mathbf{A}$), or $|\mathbf{A}|$
+- Several possible interpretations, depending on how detailed you want to get.
+- Algebraically: For simultaneous equations - the denominator when rearranging all terms to calculate the unknowns.
+- Geometrically: Depending on the number of dimensions, either the area or volume of a shape, as it goes through the transformation in question.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### For now, we will simply learn to calculate it
+
+- A $2\times 2$ matrix can be represented as follows:
+
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        a_{11} & a_{12} \\
+        a_{21} & a_{22}
+    \end{bmatrix}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+
 
 ### Calculating the determinant in a $2\times 2$ matrix
 $$
@@ -190,9 +163,9 @@ $$
 $$
 
 - The determinant is equal to:
-- The product of the diagonal that goes **top-left** to **bottom-right**,
-minus
-- The product of the diagonal that goes from *bottom-left* to *top-right*.
+- The product of the main diagonal that goes **top-left** to **bottom-right**,
+- **MINUS**
+- The product of the **off diagonal** values, which run from *bottom-left* to *top-right*.
 - This is equivalent to: $(a_{11}\cdot a_{22}) - (a_{21}\cdot a_{12})$ 
        \begin{tikzpicture}[
         strip/.style = {
@@ -221,18 +194,230 @@ minus
             (mtrx-3-1.center) edge (mtrx-2-2.center);
         \end{tikzpicture}
 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### The adjugate
+- We also have an equation to tell us how to work out the adjugate of $\mathbf{A}$, it is: $$adj.(\mathbf{A}) = \mathbf{C}^{T}$$
+- Where, $\mathbf{C}^{T}$ is the **transpose** of the **cofactor matrix** of $\mathbf{A}$.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+
+
+
+### Ingredients of the inverse matrix
+\begin{block}{The Adjugate}
+\end{block}
+- Which includes:
+    1. The cofactor matrix ($\mathbf{C}^{T}$)
+    2. A tranpose transformation 
+
+\begin{block}{The Determinant}
+\end{block}
+- This is an area that we still need to explore!
+- The [geometric intuition](https://www.youtube.com/watch?v=Ip3X9LOh2dk&index=6&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+is very very interesting, but more advanced than this course.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Application to equations
+- For the simple 2 variable linear system:
+
+$$
+    \begin{matrix}
+        2x_1    & + &   8x_2    & = &   3   \\
+        9x_1    & - &   2x_2    & = &   4   \\
+    \end{matrix}
+$$
+
+- We can rewrite it into a *coefficient* matrix and results vector
 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-## Determinant for a $3x3$  matrix
+### Cramer's rule continued...
+#### Useful tool for $2\times 2$ matrices
+- For any bi-variate system of unknowns: 
+
+$$
+    \begin{matrix}
+        2x_1    & + &   8x_2    & = &   3   \\
+        9x_1    & - &   2x_2    & = &   4   \\
+    \end{matrix}
+$$
+
+- The system can be represented as:
+$$
+    \mathbf{A}=    
+    \begin{bmatrix} 
+        2    &  8    \\
+        9    &  2    \\
+    \end{bmatrix}
+    , \mathbf{b}=
+    \begin{bmatrix}
+       3  \\
+       4  \\
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
+### Cramer's rule
+#### The generic form would be
+
+- Cramer's rule can be used for both two and three dimensional matrices.
+- For $2\times 2$ matrices, we will do the following blackboard example:
+
+$$
+    \mathbf{A}=    
+    \begin{bmatrix} 
+        a_{11}    &  a_{12}    \\
+        a_{21}    &  a_{22}    \\
+    \end{bmatrix}
+    , \mathbf{b}=
+    \begin{bmatrix}
+       b_1  \\
+       b_2  \\
+    \end{bmatrix}
+$$
+
+- The unknown values of $x_1$ and $x_2$ can be shown to be equal to
+$$
+x_1 = 
+\frac{
+            \begin{vmatrix} 
+                b_1    &  a_{12}    \\
+                b_2    &  a_{22}    \\
+            \end{vmatrix}}{|A|},
+x_2 = 
+\frac{
+            \begin{vmatrix} 
+                a_{11}    &  b_1    \\
+                a_{21}    &  b_2    \\
+            \end{vmatrix}}{|A|}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Cramer's rule continued...
+#### The determinant of $\mathbf{A}$ can is:
+
+$$
+    |\mathbf{A}|=    
+    \begin{vmatrix} 
+        a_{11}    &  a_{12}    \\
+        a_{21}    &  a_{22}    \\
+    \end{vmatrix}
+    =
+$$
+
+$$
+a_{11}\cdot a_{22} - (a_{21}\cdot a_{12})
+$$
+Thus
+$$
+x_1 = 
+\frac{
+            \begin{vmatrix} 
+                b_1    &  a_{12}    \\
+                b_2    &  a_{22}    \\
+            \end{vmatrix}}{
+            \begin{vmatrix} 
+                a_{11}    &  a_{12}    \\
+                a_{21}    &  a_{22}    \\
+            \end{vmatrix}
+            },
+x_2 = 
+\frac{
+            \begin{vmatrix} 
+                a_{11}    &  b_1    \\
+                a_{21}    &  b_2    \\
+            \end{vmatrix}}{
+            \begin{vmatrix} 
+                a_{11}    &  a_{12}    \\
+                a_{21}    &  a_{22}    \\
+            \end{vmatrix}
+            }
+$$
+
+- This may seem unnecessary at first, but the general rule is very powerful when **coefficients are complex**.
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+### Cramer's rule at it's most useful
+
+#### Consider the following system of equations:
+
+$$
+    \begin{matrix}
+        (a-\alpha_1)x_1     & + &   (b+\beta_1)x_2      & = &   3\gamma_1 + 8   \\
+        8\alpha_2x_1        & - &   (b-3\beta_2)x_2     & = &   \gamma_2 - 14   \\
+    \end{matrix}
+$$
+
+- In this case, the algebra to isolate $x_1$ and $x_2$ would be very complex.
+- Calculating the inverse of this matrix would also be difficult due to the complexity of the coefficients.
+
+#### Use Cramer's rule to solve for $x_1$ and $x_2$ in the above example
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+### Exercise
+
+#### From your textbook: Exercises:
+13.1
+
+- 
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+## The inverse of a $3\times 3$ matrix
+
+### The inverse of larger matrices
+- For any matrix larger than $2\times 2$ several alternatives exist for finding the inverse.
+
+#### Reduced row echelon transformation
+
+- Also known as **Gaus-Jordan elimination**
+- Using elementary row operations
+
+#### The long way around
+1. Calculate the adjugate of the matrix
+    1. Work out the matrix of minors
+    2. Transform to the cofactor matrix (by applying the positive-negataive mapping)
+    3. Take the transpose to get the Adjugate.
+2. Calculate the determinant
+
+
+### Reduced row echelon form
 
 
 
 ### Determinants of order 3
+### The matrix of minors for a $3\times 3$ matrix
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Useful tool for $3\times 3$ matrices
 #### Sarrus' rule
 
 \begin{tikzpicture}[
@@ -271,7 +456,25 @@ a_3 \& b_3 \& c_3 \& a_3 \& b_3   \\
 
 \end{tikzpicture}
 
-### Matrix multiplication
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Advanced: Dot products and cross products
+
+### Dot and Cross products - Advanced Understanding
+#### The dot product
+- [Geometric intuition](https://www.youtube.com/watch?v=LyGKycYT2v0&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=9)
+- You will need to watch the first 8 videos first to follow this video.
+
+#### The cross product
+- [Geometric intuition](https://www.youtube.com/watch?v=LyGKycYT2v0&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=10)
+- Again, you will need to watch the previous videos in the series.
+
+
 
 
 
