@@ -3,17 +3,17 @@ title: "Mathematics for Economics: Semester 1, Introduction"
 author: "Rob Smith"
 date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
 output:
+  beamer_presentation:
+    theme: "Berkeley"
+    colortheme: "seahorse"
+    fonttheme: "serif"
+    slide_level: 3  
   bookdown::gitbook:
     config:
       toc:
         collapse: section
     self.contained: yes
     split_by: none
-  beamer_presentation:
-    theme: "Berkeley"
-    colortheme: "seahorse"
-    fonttheme: "serif"
-    slide_level: 3  
 urlcolor: red
 header-includes: 
   - \usepackage{tikz}
@@ -113,8 +113,8 @@ knitr::include_graphics("./images/textbook.jpg")
 
 - All slides and lecture notes will be made available to you via **Moodle**, or via **GitHub**.
 
-- [Moodle](https://www.moodle.aau.dk)
-- [GitHub](https://github.com), you might need to sign up for an account.
+- [Moodle](https://www.moodle.aau.dk), you should be able to see all of the courses you are registered at from your *Moodle* profile.
+- [GitHub](https://github.com), only if you want to get access to the source of these lecture slides, you might need to sign up for an account. PDF copies will be available on *Moodle*.
 
 ### Computer programs and software
 - All software that I have used to make these slides, and all software that we will use in the course is 100% free, open source and available for download.
@@ -125,12 +125,19 @@ The main ones you will want are:
 3. 2018 TeX distribution ([MacTeX](http://www.tug.org/mactex/downloading.html) for Mac users, [MikTeX](https://miktex.org/download) for windows users)
 4. RStudio Cloud can be accessed in a [Beta version online](https://rstudio.cloud), but it is not very stable yet.
 
+### Computer programs and software ... continued
+5. [Mendeley](https://www.mendeley.com/download-desktop/) will probably be the second most important program you use when you start working on projects. 
+6. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). This is a guide to installing *Git*
+    - Not needed for this course, but a very useful tool in academia.
+    - It is a way to store your work and collaborate with your fellow students.
+    - It also allows you to manage *version control* of your projects.
+
 ### University resources
 1. Journal articles are available via the [library website](http://www.aub.aau.dk).
 
 2. Books are available from the library.
 
-Tip: Almost anything related to Aalborg University is easier to find via a Google search, as long as you include `aau` in your search.
+Tip: Almost anything you need to find that is related to Aalborg University is easier to find via a Google search, as long as you include `aau` in your search.
 
 ### Web resources
 1. Khan Academy, [partially in danish](https://da.khanacademy.org/math/precalculus/precalc-matrices), or possibly just [in English](https://www.khanacademy.org/math/precalculus/precalc-matrices)
