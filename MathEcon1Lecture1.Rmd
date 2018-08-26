@@ -1,0 +1,834 @@
+---
+title: "Mathematics for Economics: Semester 1"
+author: "Rob Smith"
+date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
+output:
+  beamer_presentation:
+    theme: "Berkeley"
+    colortheme: "seahorse"
+    fonttheme: "serif"
+    slide_level: 3
+  bookdown::gitbook:
+    config:
+      toc:
+        collapse: section
+    self.contained: yes
+    split_by: none
+urlcolor: red
+header-includes: 
+  - \usepackage{tikz}
+  - \usepackage{pgfplots}
+  - \usepackage{fontawesome5}
+  - \usepackage{academicons}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, include=FALSE)
+```
+
+# Linear Algebra: Vectors and Matrices
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Motivations
+### Why learn about Matrices??
+#### What are they good for?
+- The red text in these slides are all links to videos that you can watch.
+- How we figure out how to move around in the space around us (the geometric understanding).
+- [This geometric understanding is really powerful, and very helpful in understanding matrix operations!](https://www.youtube.com/watch?v=kjBOesZCoqc&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+- It is also pretty complex, super intersting but not required.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Some cool applications
+- [3D rendering of objects (nothing to do with this course, but very cool)](https://www.youtube.com/watch?v=KdyvizaygyY&list=PLzH6n4zXuckrPkEUK5iMQrQyvj9Z6WCrm)
+- They are also pretty amazing for solving systems of equations.
+- This turns out to be pretty useful when you are working with large economic models!
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### The good stuff - Economics
+- Economic models normally involve some system of equations.
+- We can use matrix operations to solve them!!
+- A glimpse into the future of what we want to be able to do...
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### The course in an image
+\begin{tikzpicture}[sibling distance=5em,
+                    every node/.style = {shape=rectangle, rounded corners,
+                    draw, align=center,
+                    top color=white, bottom color=blue!20}]]
+    \node {Solve a Model}
+    child {node {Inverse}
+        child {node {Ident.}}
+        child {node {Adj.}}
+        child {node {Det.}
+            child {node {Add}
+                child {node {Scalar / Vector}}}
+            child {node {Subtr.}}
+            child {node {Multi.}
+                child {node {Scalar / Vector}}}
+            child {node {Transp.}}}};
+\end{tikzpicture}
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Where all of this is going...
+- Linear algebra and systems of equations
+- A generic way to represent a system of equations is:
+
+$$
+\begin{matrix}
+        a_{11}x_1 + & a_{12}x_2 & + & a_{13}x_3 & + & \dots & + & a_{1n}x_n & = & b_1\\
+        a_{21}x_1 + & a_{22}x_2 & + & a_{23}x_3 & + & \dots & + & a_{2n}x_n & = & b_2\\
+        \vdots & \vdots & & \vdots & & \ddots & & \vdots & & \vdots \\
+        a_{m1}x_1 + & a_{m2}x_2 & + & a_{m3}x_3 & + & \dots & + & a_{mn}x_n & = & b_m
+\end{matrix}
+$$
+
+- $a_{11}$ through $a_{mn}$ are *coefficients* of the system of equations
+- Each $x$ value is a different *component* or *variable*.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### As a system
+- That system can be re-represented using matrices and vectors as:
+$$
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} & \dots & a_{1n}\\
+        a_{21} & a_{22} & a_{23} & \dots & a_{2n}\\
+        \vdots & \vdots & \vdots & \ddots & \vdots\\
+        a_{m1} & a_{m2} & a_{m3} & \dots & a_{mn}
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        x_1\\
+        x_2\\
+        \vdots\\
+        x_n
+    \end{bmatrix} =
+    \begin{bmatrix}
+        b_1\\
+        b_2\\
+        \vdots\\
+        b_m
+    \end{bmatrix}
+$$
+
+#### But first: A revision of some algebra
+
+## Economic issues and linear algebra
+
+### What the world looks like (a little simplified...)
+
+#### Fish, forestry and boat building
+
+-   A highly simplified 3 industry input-output model
+-   Boats need wood, wood cutters need fish, fishing needs boats.
+-   1 ton fish needs $\alpha$ fishing boats, $(x_1)$
+-   1 ton wood needs $\beta$ tons fish, $(x_2)$
+-   1 fishing boat needs $\gamma$ tons of wood, $(x_3)$
+-   The total extra demand for fish and wood are $(d_1)$ and $(d_2)$,
+    and we want to know, how much needs to be produced of each good in
+    order to meet these two total levels of demand.
+
+### Stated differently
+#### Another way to state this is:
+- **$x_1$ is the total production of fish:**
+    - This includes all demand, plus any additional demand caused by
+    production of more wood. 
+- **$x_2$ is total production of wood:**
+    - This includes all demand plus all additional demand caused by production
+    of more fishing boats. If we assume that fishing boats will only be
+    produced if more are needed, then 
+- **$x_3$ is production of boats:**
+    - This includes only increased demand for boats that comes from production of fish.
+        
+### Expressed in algebra
+#### In a few equations, this can be written as:
+
+$$
+\begin{matrix}
+    x_1 & = & \beta x_2 & + & d_1\\
+    x_2 & = & \gamma x_3 & + & d_2\\
+    x_3 & = & \alpha x_1
+\end{matrix}
+$$
+
+### Some simple algebra
+
+#### Exercise: To practice some of your gymnasium algebra:
+
+$$
+\begin{matrix}
+    x_1 & = & \beta x_2 & + & d_1\\
+    x_2 & = & \gamma x_3 & + & d_2\\
+    x_3 & = & \alpha x_1
+\end{matrix}
+$$
+
+- Solve for $x_1$, $x_2$ and $x_3$ in terms of $d_1$ and $d_2$, and
+    the coefficients $\alpha$, $\beta$ and $\gamma$.
+
+- Hint: To start with, substite $x_3 = \alpha x_1$ into
+    $x_2 = \gamma x_3 + d_2$
+    
+#### The solution will look like this:
+
+$$
+\begin{matrix}
+    x_1 & = & .?. & = & \text{Total tons of fish} \\
+    x_2 & = & .?. & = & \text{Total tons of wood} \\
+    x_3 & = & .?. & = & \text{Total number of boats}
+\end{matrix}
+$$
+
+### What do the results look like in general?
+
+#### The analytical solution for this system is:
+For $x_1$:
+$$x_1 = \frac{d_1 + \beta d_2}{1 - \alpha \beta \gamma}$$
+For $x_2$:
+$$x_2 = \frac{\alpha \gamma d_1 + d_2}{1 - \alpha \beta \gamma}$$
+For $x_3$:
+$$x_3 = \frac{\alpha d_1 + \alpha \beta d_2}{1 - \alpha \beta \gamma}$$
+
+#### Note:
+- You may notice, that the denominator ($1 - \alpha \beta \gamma$) is the same for all three!
+- This is called the determinant... we will come back to this later in the course!
+
+### A general system of equations
+
+- A generic way to represent a system of equations is:
+
+$$
+\begin{matrix}
+    a_{11}x_1 + & a_{12}x_2 & + & a_{13}x_3 & + & \dots & + & a_{1n}x_n & = & b_1\\
+    a_{21}x_1 + & a_{22}x_2 & + & a_{23}x_3 & + & \dots & + & a_{2n}x_n & = & b_2\\
+    \vdots & \vdots & & \vdots & & \ddots & & \vdots & & \vdots \\
+    a_{m1}x_1 + & a_{m2}x_2 & + & a_{m3}x_3 & + & \dots & + & a_{mn}x_n & = & b_m
+\end{matrix}
+$$
+
+- $a_{11}$ through $a_{mn}$ are all of the **coefficients** of the system of equations
+- Each $x$ value is a different **component** or **variable**. You would normally have probably used $x$, $y$ or $z$.
+
+### Practice example:
+
+- If we take a simple example, and add some numbers to the equations:
+
+$$
+\begin{matrix}
+2x_1    & + &   3x_2    & + &   2x_3  & = &     14  \\
+4x_1    & + &   x_2     & - &   3x_3  & = &     08   \\
+        &   &   x_2     & + &   7x_3  & = &     15
+\end{matrix}
+$$
+
+- Solve for $x_1$, $x_2$ and $x_3$.
+
+### Practice example:
+If we apply all the variables to the empty spaces, and find the scalar (number) that was is used to multiply with each one, we get:
+
+$$
+\begin{matrix}
+2\cdot x_1    & + &   3\cdot x_2    & + &   2\cdot x_3  & = &     14  \\
+4\cdot x_1    & + &   1\cdot x_2    & - &   3\cdot x_3  & = &     08   \\
+0\cdot x_1    & + &   1\cdot x_2    & + &   7\cdot x_3  & = &     15
+\end{matrix}
+$$
+
+- Solve for $x_1$, $x_2$ and $x_3$.
+
+#### Note:
+- Those numbers before each dot ($\cdot$), are called **coefficients**.
+
+### What does it mean?
+- This means that for a given system of equations, and a given level 
+    of final demand values, there can be one (or more) solutions for 
+    the final quantities of $n$ different goods $x_1:x_n$, that satisfies $b_1:b_n$.
+
+### Where all of this is going??
+
+- When we moved all of the $x$'s to the left there was a secret motive...
+- In every single equation  all of the $x$ values line up perfectly!!!
+- Wouldn't it be great if there was a way to write this so that we just know that all 
+the entries in column 1 refer to $x_1$, all the entries in column two refer to $x_2$ and so on...?
+
+#### This is where matrix notation comes in!
+
+### The same system
+
+#### Separating the components
+- We get:
+    1. A coefficient matrix $\mathbf{A}$
+    2. A vector of variables $\mathbf{x}$
+    3. A vector of values $\mathbf{b}$
+
+$$
+\begin{bmatrix}
+2    &  3    &   2\\
+4    &  1    &   3\\
+0    &  1    &   7
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+14  \\
+08   \\
+15
+\end{bmatrix}
+$$
+
+### Coordinates of coefficients
+
+We can then label the coordinates of each of the coefficients:
+
+$$
+\begin{bmatrix}
+a_{11}=2    &  a_{12}=3    &   a_{13}=2\\
+a_{21}=4    &  a_{22}=1    &   a_{23}=3\\
+a_{31}=0    &  a_{32}=1    &   a_{33}=7
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+b_1=14  \\
+b_2=08   \\
+b_3=15
+\end{bmatrix}
+$$
+
+- We will see that we can use these coordinates very effectively!
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### But first, the foundations!!
+#### What are matrices and vectors?
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Matrices and vectors: Foundations
+### What is Matrix?
+- Just a **very useful** and **very powerful** way to store information.
+- Matrices are always denoted with a **bold** letter, such as **A**, **B**, or **M**.
+- [Khan Academy: Pre-calculus course on matrices](https://www.khanacademy.org/math/precalculus/precalc-matrices)
+- [Khan Academy: Introduction what is a matrix??](https://www.youtube.com/watch?v=0oGJTQCy4cQ&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=1)
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Conventions
+- By convention, we note $rows (m)$ first and then $columns (n)$, so matrix $\mathbf{A}$ is an $m \times n$ matrix
+$$
+\mathbf{M}=
+    \begin{bmatrix}
+        1 & 2 & 3 & 4 & 5 \\
+        3 & 4 & 5 & 6 & 7
+    \end{bmatrix}
+$$
+- Matrix $\mathbf{M}$ has 2 rows, and 5 columns. $\mathbf{M}$ is a $2 \times 5$ matrix.
+- [Example, data in a matrix](https://www.youtube.com/watch?v=PPOIlLhsT6s&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH&index=2)
+- Each number in the matrix is called an *element*.
+- A **vector** is just a special case of a matrix that either has only $1$ *row* or only $1$ *column*.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Examples
+#### What do they look like?
+- Matrix 
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        1 & 2 & 3 \\
+        3 & 4 & 5
+    \end{bmatrix}
+$$
+
+- Row vector
+$$
+\mathbf{b}=
+    \begin{bmatrix}
+        1 & 2 & 3
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### ...continued
+
+#### A column vector
+- Column vector
+$$
+\mathbf{f}=
+    \begin{bmatrix}
+        1\\
+        8\\
+        9
+    \end{bmatrix}
+$$
+- Notice that all vectors are labelled with a small **bold** 
+letter (lower-case) and all matrices with a capital 
+**bold** letter (upper-case).
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Vector operations
+### Addition and subtraction
+
+#### Exactly equal dimensions
+- **Only vectors with the same dimensions** can be added or subtracted from each other.
+- This is because addition and subtraction can only happen when the coordinates of each entry can be matched up.
+
+### For example, it makes sense to do this:
+
+$$
+\begin{bmatrix}
+4   &   6   &   1
+\end{bmatrix}
++
+\begin{bmatrix}
+8   &   3   &   18
+\end{bmatrix}=
+\begin{bmatrix}
+12   &   9   &   19
+\end{bmatrix}
+$$
+
+Or this, 
+$$
+\begin{bmatrix}
+4   \\
+14  \\
+84  \\
+2
+\end{bmatrix}
+-
+\begin{bmatrix}
+78   \\
+1  \\
+75  \\
+6
+\end{bmatrix}
+=
+\begin{bmatrix}
+-74   \\
+13  \\
+11  \\
+-4
+\end{bmatrix}
+$$
+
+- Because in each case we can match up each of the entries according to their locations.
+
+### How we locate an entry in a vector
+
+#### Each of the entries can be located in a grid
+- The grid is labelled $row \times column$
+$$
+\mathbf{b}=
+    \begin{bmatrix}
+        c_1 & c_2 & c_3
+    \end{bmatrix}
+$$
+$$
+\mathbf{f}=
+    \begin{bmatrix}
+        r_1\\
+        r_2\\
+        r_3
+    \end{bmatrix}
+$$
+- In a **matrix**, you use both the row number (first) and the column number (second) to find a position:
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        a_{11} & a_{12} & a_{13} \\
+        a_{21} & a_{22} & a_{23}
+    \end{bmatrix}
+$$
+
+### Mapping of addition and subtraction
+- When we add or subtract, each element in the first matrix or vector must be **perfectly mapped** to **a perfectly located** element in the second matrix or vector!!!
+
+#### Formally
+
+$$
+\mathbf{A}(a_{ij})_{(m \times n)} + \mathbf{B}(b_{ij})_{(m \times n)} = (a_{ij} + b_{ij})_{(m \times n)}
+$$
+
+- Therefore, we can only add or subtract matrices or vectors with:
+
+#### !!! EXACLTY THE SAME DIMENSIONS !!!
+
+- $(2\times 2) + (2\times 2)$ is good,
+- $(3\times 1) - (3\times 1)$ is good,
+- $(1\times 2) + (2\times 4)$ is impossible.
+
+## Scalar Operations
+
+### Addition and subtraction
+- A scalar is just a number.
+- A single, stand alone number can also be though of as a vector with dimensions ($1\times 1$).
+- A matrix or a vector can be multiplied by a scalar, but **it highly unlikely** that they have the same dimensions... so we will generally say that:
+
+#### A scalar CANNOT be added to or subtracted from a vector or matrix!!
+- How would you choose which number to add it to????
+- Unless the vector or matrix was also of order ($1\times 1$).
+
+### Scalar-Vector multiplication
+
+#### Just multiply each element by the scalar
+-  $x=4$, and,
+$$
+ \mathbf{f}=
+    \begin{bmatrix}
+        10\\
+        3\\
+        9
+    \end{bmatrix}
+$$
+$$
+\mathbf{x}\cdot \mathbf{f}
+=
+    \begin{bmatrix}
+        4 \cdot 10\\
+        4 \cdot 3\\
+        4 \cdot 9
+    \end{bmatrix}
+=
+    \begin{bmatrix}
+        40\\
+        12\\
+        36
+    \end{bmatrix}
+$$
+
+#### Formally
+For matrix $\mathbf{A} = (a_{ij})_{m\times n}$, and scalar $c$
+
+$$
+c\mathbf{A} = c(a_{ij})_{m \times n} = (ca_{ij})_{m \times n}
+$$
+
+
+### Scalar-Matrix multiplication
+
+#### Scalar multiplication
+- [Scalar and matrix multiplication](https://www.youtube.com/watch?v=TbaltFbJ3wE&index=3&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+- Exactly the same as scalar-vector multiplication
+- Just multiply each element by the scalar number!
+- When used for multiplication this can be imagined as a number that you will use to "scale" each entry of a matrix up or down.
+
+-  $x=3$, and,
+$$
+ \mathbf{H}=
+    \begin{bmatrix}
+        10  &   4\\
+        3   &   1\\
+        9   &   \frac{3}{5}
+    \end{bmatrix}
+$$
+$$
+\mathbf{x}\cdot \mathbf{H}
+=
+    \begin{bmatrix}
+        3\cdot 10  &   3\cdot 4\\
+        3\cdot 3   &   3\cdot 1\\
+        3\cdot 9   &   3\cdot \frac{3}{5}
+    \end{bmatrix}
+=
+    \begin{bmatrix}
+        30  &   12\\
+        9   &   3\\
+        27   &   \frac{9}{5}
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### The commutative and associative laws
+- If $x$ is a scalar (number), and $\mathbf{A}$ is a matrix, then 
+$$
+x \cdot \mathbf{A} = \mathbf{A} \cdot x
+$$
+- Or simply, $x\mathbf{A} = \mathbf{A}x$, thus **scalar multiplication** IS commutative.
+- Therefore, the **order does not matter**. 
+$$
+x + \mathbf{A} = \mathbf{A} + x
+$$
+, and 
+$$
+\mathbf{A} - x = -x + \mathbf{A}
+$$
+- Scalar multiplication **IS** commutative and associative.
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Rules for vector addition and multiplication by scalars
+
+#### Rules
+If $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$ are arbitrary *n*-vectors and $\alpha$, $\beta$ are arbitrary numbers, then:
+
+a. $(\mathbf{a} + \mathbf{b}) + \mathbf{c} = \mathbf{a} + (\mathbf{b} + \mathbf{c})$
+b. $\mathbf{a} + \mathbf{b}  = \mathbf{b} + \mathbf{a}$
+c. $\mathbf{a} + \mathbf{0}  = \mathbf{a}$
+d. $\mathbf{a} + (-\mathbf{a})  = \mathbf{0}$
+e. $(\alpha + \beta)\mathbf{a} = \alpha\mathbf{a} + \beta\mathbf{a}$
+f. $\alpha(\mathbf{a} + \mathbf{b})  = \alpha\mathbf{a} + \alpha\mathbf{b}$
+g. $\alpha(\beta\mathbf{a}) = (\alpha\beta)\mathbf{a}$
+h. $1\mathbf{a} = \mathbf{a}$
+
+#### Note:
+Addition is valid because all vectors are of order **n**.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Some simple exercises to try
+1.  Find $x \cdot \mathbf{A}$, for 
+$$
+x = 5 
+\text{, and }
+\mathbf{A} =
+    \begin{bmatrix}
+        1 & 2 & 3 \\
+        3 & 4 & 5
+    \end{bmatrix}
+$$
+2.  Find $x \cdot \mathbf{A}$, for 
+$$
+x = -3 
+\text{, and }
+\mathbf{A} =
+    \begin{bmatrix}
+        8           & 0 & 1 \\
+        3           & v & 5 \\
+        \frac{1}{3} & 4 & 2p 
+    \end{bmatrix}
+$$
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+## Matrix-Matrix Basic operations
+### Addition and subtraction
+- [Addition and subtraction of matrices](https://www.youtube.com/watch?v=WR9qCSXJlyY&index=4&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+- !!! You can only add or subtract matrices if they are exactly the same shape / size !!!
+- I.e. A 3x3 matrix can only be added to another 3x3 matrix! The same for subtraction.
+- Simply add or subtract the corresponding *elements* (or *entries*).
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Addition and subtraction rules
+- To add two matrices, simply add the values of each entry of the exact same locations in the each matrix.
+- Also, 
+$$
+\mathbf{A} + \mathbf{B} = \mathbf{B} + \mathbf{A}
+$$
+- As with simple algebra, subtraction is the same as multiplying one of the matrices by $(-1)$, which is a scalar. Therefore 
+$$
+\mathbf{A} - \mathbf{B} = (-1)\mathbf{B} + \mathbf{A}
+$$
+- Because we know that with scalar multiplication ordering is not important (stated differently: it is commutative).
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Some simple exercises to try
+1.  Find $\mathbf{A} + \mathbf{B}$, for 
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        1 & 2 & 3 \\
+        3 & 4 & 5
+    \end{bmatrix}
+\text{, and }\mathbf{B}=
+    \begin{bmatrix}
+        1 & 2 & 3 \\
+        3 & 4 & 5
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Exercises continued
+2. Find $\mathbf{A} - \mathbf{B}$, for
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        5 & 2\\
+        3 & 4\\
+        8 & 6
+    \end{bmatrix}
+\text{, and }\mathbf{B}=
+    \begin{bmatrix}
+        \frac{3}{5} & 2\\
+        3 & 4\\
+        5 & \frac{1}{2}
+    \end{bmatrix}
+$$
+3.  Find $x\mathbf{A}$, for
+$$
+x = \frac{1}{2}, and \quad \mathbf{A}=
+    \begin{bmatrix}
+        1 & 2 & 3 \\
+        3 & 4 & 5
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Matrices: Transpose and data representation
+### Taking the transpose
+- [Transpose of a matrix](https://www.youtube.com/watch?v=TZrKrNVhbjI&index=5&list=PLGR_7q6BJHQFbTCW995GhRY1AwWuWOvBH)
+- The transpose of matrix $\mathbf{A}$, can be written as $\mathbf{A}^{T}$
+- Rows become columns! Therefore a matrix of order $3\times2$ will become a $2\times3$ matrix if we take the transpose.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Simple 2 x 3 example
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        5 & 2\\
+        3 & 4\\
+        8 & 6
+    \end{bmatrix}
+\text{, and }\mathbf{A}^T=
+    \begin{bmatrix}
+        5 & 3 & 8\\
+        2 & 4 & 6
+    \end{bmatrix}
+$$
+- The purpose of the transpose will be clearer when we start to solve systems of equations.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Exercises
+1. Find the transpose of $\mathbf{A}$, for
+$$
+\mathbf{A}=
+    \begin{bmatrix}
+        7 & 14 & -13 \\
+        1 & 2 & 3 \\
+        2221 & 743 & 5
+    \end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Exercises continued
+2. Find the transpose of $\mathbf{A}$, plus $\mathbf{B}^{T}$, for
+$$        
+    \mathbf{A}=
+        \begin{bmatrix}
+            5 & 2\\
+            3 & 4\\
+            8 & 6
+        \end{bmatrix}
+    \text{, and } \mathbf{B}=
+        \begin{bmatrix}
+            \frac{1}{3} & 2\\
+            3 & 4\\
+            5 & \frac{4}{5}
+        \end{bmatrix}
+$$
+3. Find $x \times \mathbf{A}^{T}$, for
+$$
+    x = \frac{1}{2}\text{, and }\mathbf{A}=
+        \begin{bmatrix}
+            a & 2 & v \\
+            3 & z & 5
+        \end{bmatrix}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Transpose Rules
+
+#### Some rules of the transpose are:
+
+a. $(\mathbf{A}^T)^T = \mathbf{A}$
+b. $(\mathbf{A}+\mathbf{B})^T= \mathbf{A}^T + \mathbf{B}^T$
+c. $(\alpha\mathbf{A})^T = \alpha\mathbf{A}^T$
+d. $(\mathbf{A}\mathbf{B})^T = \mathbf{B}^T\mathbf{A}^T$ (NOT $\mathbf{A}^T\mathbf{B}^T$)
+
+- We will wait to explain rule **d.** until after we have covered multiplication.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Data representation exercise
+1. There are cats and birds, cats have 4 legs, birds have 2. Cats have 20 claws, birds have 8. Cats eat once a day, birds eat 5 times.
+2. Bob and Dave are friends. If each of them eat food, they gain wait differently. For each kilogram of food, Bob gains 400g, and Dave gains 600g. For each kilometre they run, they each lose weight differently. Bob loses 50g and Dave loses 85g. For each beer they drink, Bob gains 200g, and Dave gains 100g.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### ... continued
+3. X and Y are variables, lets call them Bob and Dave's weight. Both X and Y depend on eating ( a ), running ( b ) and beers ( c ). Write equations for these Bob and Dave's weight.
+- We now have the coefficients of a system of simultaneous equations stored in a matrix... We'll get back to this!
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Exercises
+
+12.?
+12.??
+12.??
+
+

@@ -45,7 +45,32 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Formulae
 
-## Multiplication
+## Vector addition rules, and scalar-vector multiplication rules
+
+If $\mathbf{a}$, $\mathbf{b}$ and $\mathbf{c}$ are arbitrary *n*-vectors and $\alpha$, $\beta$ are arbitrary numbers, then:
+
+a. $(\mathbf{a} + \mathbf{b}) + \mathbf{c} = \mathbf{a} + (\mathbf{b} + \mathbf{c})$
+b. $\mathbf{a} + \mathbf{b}  = \mathbf{b} + \mathbf{a}$
+c. $\mathbf{a} + \mathbf{0}  = \mathbf{a}$
+d. $\mathbf{a} + (-\mathbf{a})  = \mathbf{0}$
+e. $(\alpha + \beta)\mathbf{a} = \alpha\mathbf{a} + \beta\mathbf{a}$
+f. $\alpha(\mathbf{a} + \mathbf{b})  = \alpha\mathbf{a} + \alpha\mathbf{b}$
+g. $\alpha(\beta\mathbf{a}) = (\alpha\beta)\mathbf{a}$
+h. $1\mathbf{a} = \mathbf{a}$
+
+## Vector and scalar product rules
+a. $\mathbf{a} \cdot \mathbf{b} = \mathbf{b} \cdot \mathbf{a}$
+b. $\mathbf{a} \cdot (\mathbf{b} + \mathbf{c})  = \mathbf{a}\cdot \mathbf{b} + \mathbf{a}\cdot\mathbf{c}$
+c. $(\alpha\mathbf{a})\cdot \mathbf{b} = \mathbf{a} \cdot (\alpha\mathbf{b}) = \alpha (\mathbf{a}\cdot\mathbf{b})$
+d. $\mathbf{a}\cdot\mathbf{a} > 0 \Longleftrightarrow \mathbf{a}\neq \mathbf{0}$
+
+## Transpose Rules
+a. $(\mathbf{A}^T)^T = \mathbf{A}$
+b. $(\mathbf{A}+\mathbf{B})^T= \mathbf{A}^T + \mathbf{B}^T$
+c. $(\alpha\mathbf{A})^T = \alpha\mathbf{A}^T$
+d. $(\mathbf{A}\mathbf{B})^T = \mathbf{B}^T\mathbf{A}^T$ (NOT $\mathbf{A}^T\mathbf{B}^T$)
+
+## Matrix Multiplication
 \begin{tikzpicture}[>=latex]
 % les matrices
 \matrix (A) [matrix of math nodes,%
@@ -110,7 +135,8 @@ knitr::opts_chunk$set(echo = TRUE)
 \end{tikzpicture}
 - Source : Alain Matthes, http://altermundus.com/pages/examples.html
 
-## Multiplication
+## Multiplication Rules
+
 $\mathbf{A} = (a_{ij})_{m\times n}$ and $\mathbf{B} = (b_{ij})_{m\times n}$ and 
 $\mathbf{C} = (c_{ij})_{m\times n}$ are $m\times n$ matrices, and $\delta$, $\alpha$ and $\beta$ are scalars (real numbers).
 
@@ -123,3 +149,5 @@ $\mathbf{C} = (c_{ij})_{m\times n}$ are $m\times n$ matrices, and $\delta$, $\al
 - $\mathbf{A}\mathbf{B} \neq \mathbf{B}\mathbf{A}$, in most cases.
 - $(\mathbf{A}\mathbf{B})\mathbf{C} = \mathbf{A}(\mathbf{B}\mathbf{C})$
 - $(\mathbf{A} + \mathbf{B})\mathbf{C} = \mathbf{A}\mathbf{C} + \mathbf{B}\mathbf{C})$
+
+

@@ -27,10 +27,6 @@ header-includes:
 knitr::opts_chunk$set(echo = FALSE, include=FALSE)
 ```
 
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
 # Welcome to mathematics for economics: Part 1
 
 
@@ -43,20 +39,20 @@ knitr::opts_chunk$set(echo = FALSE, include=FALSE)
 
 ## Introduction to the course
 
-
 ### Information about the course
 First things first... 
 
-My name is **Rob Smith**, and I am a PhD candidate here in the Macroeconomics research group.
+My name is **Rob Smith**, and I am a PhD candidate here in the Macroeconomics research group, [MaMTEP](https://www.business.aau.dk/research/mamtep/).
 
 So that you are sure of this, I am not a mathematician with an interest in economics. I am an economist with a love for mathematics.
 
-- These lectures are to assist you in learning.
+- These lectures are to assist **you** in learning. The learning is up to you. 
+- My job is to give you extra information about the subject on top of your learning - My hope is that you come out of this course knowing more than I do.
 
 ### Language
 You may have already guessed, but this course is going to be taught in **English**.
 
-- I am fully aware that language is not everyone's stong suit.
+- I am fully aware that language is not everyone's strong suit.
 
 - Do not presume that your classmates are better at English than you are.
 
@@ -84,7 +80,7 @@ You may have already guessed, but this course is going to be taught in **English
 - We will be doing some exercises in class in groups, this makes it easier to communicate with each other, and is less intimidating when you want to ask a question.
 
 - Even though your classmates can be really helpful,
-    1. When in class, always ask me or Andreas.
+    1. When in class, always ask me or on of the teaching assistants.
     2. When away from class, Step 1: always ask Google!
     3. Step 3: Ask a classmate.
     4. Step 4: Book a meeting with me.
@@ -108,6 +104,11 @@ It's old, but it's good. It will also cover you for *Math Econ Part 2*.
 knitr::include_graphics("./images/textbook.jpg")
 ```
 
+### Additional books available online
+
+- [Elementary Linear Algebra](http://www.astronomia.edu.uy/progs/algebra/Larson%20-%20Edwards%20y%20Falvo%20Elementary%20Linear%20Algebra.pdf), by Ron Larson and David C. Falvo
+
+- [Elementary Linear Algebra: Applications Version](https://fac.ksu.edu.sa/sites/default/files/howard_anton_chris_rorres_elementary_linear_algebra_applications_version_11th_edition.pdf), by Howard Anton and Chris Rorres
 
 ### Slides, exercises and practice questions
 
@@ -134,8 +135,12 @@ The main ones you will want are:
 
 ### University resources
 1. Journal articles are available via the [library website](http://www.aub.aau.dk).
-
+    - The easiest way to search is through [Google Scholar](https://scholar.google.dk), but access is provided through your university log-in.
+        i. Search [Google Scholar](https://scholar.google.dk) for the article.
+        ii. Search the via the [library website](http://www.aub.aau.dk) for the article and authors you have found.
 2. Books are available from the library.
+3. Each other, and us, the academic staff
+    - Do not under-estimate the opportunity to be with so many like minded people! Especially people who understand what you are talking about!
 
 Tip: Almost anything you need to find that is related to Aalborg University is easier to find via a Google search, as long as you include `aau` in your search.
 
@@ -144,7 +149,7 @@ Tip: Almost anything you need to find that is related to Aalborg University is e
 2. [EdX courses](https://www.edx.org), of which there are several.
 3. [Coursera courses](https://www.coursera.org), of which there are several.
 4. [3Blue1Brown - The essence of linear algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab), a series of short videos that help with intuition, but are quite advanced. Don't be worried if you don't understand everything in them.
-5. [Datacamp](https://www.datacamp.com), which is also accessible via the RStudio cloud version, is a fantastic resource for developing your programming understanding and skills.
+5. [Datacamp](https://www.datacamp.com), which is also accessible via the RStudio cloud version, is a fantastic resource for developing your programming understanding and skills. 
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -158,25 +163,21 @@ Tip: Almost anything you need to find that is related to Aalborg University is e
 
 #### Pre-reading and examples
 - All students are expected to read a minimum of the textbook content prior to the lecture.
-- All students should be able to solve the examples in the text.
-
-- Reading requirements will be posted in advance of lectures. (None for today)
+- All students should be able to solve the *examples* in the textbook, but the **problems** with be done as exercises in class.
+    - You are welcome to attempt them in advance.
+- Reading requirements will be posted in advance of lectures.
+- Check [Moodle](https://www.moodle.aau.dk) for today.
 
 
 ### Assignments and Examination
 
+#### All assignments can be done at your own pace
+- There is no assessment of assignments
+- Make sure you keep up!
 
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+#### Examination
+- The final examination is a 2 hour written examination, on the 11. January 2019.
+- No aids will be allowed. No books, no notes, or electronic devices.
+- ONLY a formula sheet **provided on the day of the exam**. (You will see a **similar** copy before the examination)
 
-
-
-
-
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
