@@ -3,17 +3,19 @@ title: "Mathematics for Economics: Semester 1"
 author: "Rob Smith"
 date: "Updated `r format(Sys.time(), '%B %d, %Y')`"
 output:
-  beamer_presentation:
-    theme: "Berkeley"
-    colortheme: "seahorse"
-    fonttheme: "serif"
-    slide_level: 3
+  bookdown::word_document2: 
+    reference_docx: mystyles.docx
   bookdown::gitbook:
     config:
       toc:
         collapse: section
     self.contained: yes
     split_by: none
+  beamer_presentation:
+    theme: "Berkeley"
+    colortheme: "seahorse"
+    fonttheme: "serif"
+    slide_level: 3
 urlcolor: red
 header-includes: 
   - \usepackage{tikz}

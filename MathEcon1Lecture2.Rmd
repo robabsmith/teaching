@@ -155,7 +155,7 @@ $$
 c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \dots + a_{in}b_{nj}
 $$
 
-- This is much easier to understand by practicing than it is by reading abstract equations!
+- This is much easier to understand by practising than it is by reading abstract equations!
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -212,6 +212,18 @@ $$
 - There is always a *row* in $\mathbf{A}$ that corresponds to the *column* in $\mathbf{B}$ you are looking at.
 - **Start with the dimensions of the solution**, then use the location in the solution matrix to check which column and row you should be working from in the other two matrices.
 
+#### You can read the row and column sources from the coordinates in the results matrix. For $\mathbf{AB}=\mathbf{C}$
+$$
+\mathbf{C}=
+  \begin{bmatrix}
+    c_{11}     &  \color{red}{c_{12}} \\
+    \color{blue}{c_{21}}      &  c_{22}
+  \end{bmatrix}
+\begin{matrix}
+    \color{red}{c_{12}}\text { is row 1 in A, and column 2 B}\\
+    \color{blue}{c_{21}}\text { is row 2 in A, and column 1 B}
+  \end{matrix}
+$$
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -348,7 +360,7 @@ If $\mathbf{A} = (a_{ij})_{m\times n}$ and $\mathbf{B} = (b_{ij})_{m\times n}$ a
 
 ### The link to linear systems of equations
 
-#### Consider the following matrix-vector product
+#### Going backwards, we can see that:
 
 $$
 \begin{bmatrix}
@@ -366,9 +378,9 @@ $$
 $$
 $$
 \begin{bmatrix}
-    2\cdot x_1 & +   &  3\cdot x_2  & +  &   2\cdot x_2\\
-    4\cdot x_1 & +   &  1\cdot x_2  & +  &   3\cdot x_2\\
-    0\cdot x_1 & +   &  1\cdot x_2  & +  &   7\cdot x_2
+    2\cdot x_1 & +   &  3\cdot x_2  & +  &   2\cdot x_3\\
+    4\cdot x_1 & +   &  1\cdot x_2  & +  &   3\cdot x_3\\
+    0\cdot x_1 & +   &  1\cdot x_2  & +  &   7\cdot x_3
 \end{bmatrix}=
 $$
 $$
@@ -716,6 +728,556 @@ $$
 - The dimensions of the resulting zero matrix will then depend on original matrix and the size chosen for the zero matrix.
 
 
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Solutions for a system of equations
+### What forms of solutions do we expect to find?
+
+The solution for a system of equations with $n$ unknowns are the values of $x_1, x_2 \dots x_n$ which satisfies all of the equations in the system at the same time.
+
+The [Khan Academy course](https://www.khanacademy.org/math/algebra/systems-of-linear-equations/possible-number-of-solutions-of-systems-of-linear-equations/v/inconsistent-systems-of-equations) on solutions to systems of equations is very useful.
+
+#### A system of equations has either
+
+1. No solution $\}$ **inconsistent** system,
+2. Exactly one solution $\}$ **consistent** system,
+3. Infinitely many solutions $\}$ **consistent, and dependent** system
+
+- As noted above, a system of equations can either be [consitent or inconsistent](https://www.khanacademy.org/math/algebra/systems-of-linear-equations/possible-number-of-solutions-of-systems-of-linear-equations/v/consistent-and-inconsistent-systems).
+
+- They can also be either [dependent or independent](https://www.khanacademy.org/math/algebra/systems-of-linear-equations/possible-number-of-solutions-of-systems-of-linear-equations/v/independent-and-dependent-systems)
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Two equations with two unknowns:
+
+$a_{11}x_1 + a_{12}x_2 = b_1$         (L1)
+
+$a_{21}x_1 + a_{22}x_2 = b_2$         (L1)
+
+- There are three options: 
+a. 1 solution  **OR**  
+b. Infinitely many  **OR**  
+c. No solutions.
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Two equations with two unknowns:
+
+1. Graphically - Just plot the two lines
+    a. One intercept between the lines $\Rightarrow$ 1 solution
+    b. Identical lines $\Rightarrow$ Infinitely many
+    c. No intercept! Lines are parallel $\Rightarrow$ No solutions
+2. Algebraically
+    a. Specific values for x and y $\Rightarrow$ 1 solution
+    b. Consistent, but unhelpful solutions, such as $0 = 0$, or $3 = 3$ $\Rightarrow$ Infinitely many
+    c. Inconsistent solutions, such as $0 = 5$ $\Rightarrow$ No solutions
+
+The algebraic rules still apply when working with many variables.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Solving systems of equations by **equation manipulation**
+
+This is in intuition behind the **row operations** we will do in matrix algebra.
+
+In a case with many variables, for example, the following system of equations:
+
+$$
+\begin{matrix}
+3w  & + &   2x  & + &   3y   & + &   5z  & = &   10   \\
+    &  &    w   & + &   y  & - &   4z  & = &   5
+\end{matrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Solving systems of equations by **equation manipulation** 2
+
+Instead of using pure substitution, we re-arrange it so that the variables match up:
+
+$$
+\begin{matrix}
+3w  & + &   2x  & + &   3y   & + &   5z  & = &   10   \\
+w    &  &       & + &   y  & - &   4z  & = &   5
+\end{matrix}
+$$
+
+We can multiply the second equation by $-3$ and add the left-hand and right-hand-sides.
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Solving systems of equations by **equation manipulation** 3
+
+We then get:
+
+$$
+\begin{matrix}
+3w  & + &   2x  & + &   3y   & + &   5z  & = &   10   \\
+-3w    &  &       & - &   3y  & + &   12z  & = &   -15
+\end{matrix}
+$$
+
+and finally:
+
+$$
+\begin{matrix}
+0w  & + &   2x  & + &   0y   & + &   17z  & = &   -5
+\end{matrix}
+$$
+
+Where:
+
+$$
+\begin{matrix}
+x  = -\frac{17}{2}z   - \frac{5}{2}
+\end{matrix}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Systems of equations in augmented matrices
+
+This is just representing the whole system in a single matrix.
+
+$$
+\begin{matrix}
+3w  & + &   2x  & + &   3y   & + &   5z  & = &   10   \\
+w    &  &       & + &   y  & - &   4z  & = &   5
+\end{matrix}
+$$
+
+Just becomes:
+
+$$
+\begin{bmatrix}
+    \begin{array}{cccc|c}
+        3   &   2  &    3   &   5   &   10   \\
+        1   &   0  &    1   &   -4  &   5
+    \end{array}
+\end{bmatrix}
+$$
+
+#### Note:
+- It is **crucial** that the variables are correctly aligned before converting to an augmented matrix.
+- Note now, how **each column** represents **each variable**
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Systems of equations in augmented matrices
+
+We can then perform exactly the same operations, but without the complication of the variable names.
+
+$$
+\begin{bmatrix}
+    \begin{array}{cccc|c}
+        3   &   2  &    3   &   5   &   10   \\
+        1   &   0  &    1   &   -4  &   5
+    \end{array}
+\end{bmatrix}
+\begin{matrix}
+  \\
+\times (-3)  
+\end{matrix}
+=
+\begin{bmatrix}
+    \begin{array}{cccc|c}
+        3   &   2  &    3   &   5   &   10   \\
+        -3  &   0  &   -3   &   12  &   -15
+    \end{array}
+\end{bmatrix}
+$$
+
+And, adding row 2 to row 1 we get:
+
+$$
+\begin{bmatrix}
+    \begin{array}{cccc|c}
+        0   &   2  &    0   &   17   &   -5   \\
+    \end{array}
+\end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Systems of equations in augmented matrices
+
+This is the exact equivalent of:
+
+$$
+\begin{matrix}
+0w  & + &   2x  & + &   0y   & + &   17z  & = &   -5
+\end{matrix}
+$$
+
+Where:
+
+$$
+\begin{matrix}
+x  = -\frac{17}{2}z   -\frac{5}{2}
+\end{matrix}
+$$
+
+- The trouble with this form of evaluation is that we mist still use standard substitution algebra to calculate the values solutions for $w$, $y$ and $z$.
+
+- This can be done more simply.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Elementary row operations
+
+Given a system, we can label the rows as follows, and then perform basic operations on them.
+
+$$
+\begin{bmatrix}
+    \begin{array}{ccc|c}
+        2  &    3   &   5   &   10      \\
+        0  &   -3   &   12  &   -15     \\
+        8  &   -1   &   2  &   4
+    \end{array}
+\end{bmatrix}
+\begin{matrix}
+        \mathbf{R1}\\
+        \mathbf{R2}\\
+        \mathbf{R3}
+\end{matrix}
+$$
+
+1. Swap rows: $\mathbf{R1} \leftrightarrow \mathbf{R1}$
+2. Multiply one row by a (non-zero) constant: $5\mathbf{R3} \rightarrow \mathbf{R3}$
+3. Add one row to another: $\mathbf{R1} + \mathbf{R3}\rightarrow \mathbf{R3}$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Reduced row echelon form
+### The goal
+
+We can use these operations to drastically simplify a system of equations!
+For example:
+
+$$
+\begin{matrix}
+    2x  &   +   &   2y &    = 10 \\
+    -2x &   -   &   3y &    = 3
+\end{matrix}
+$$
+
+Can be written as:
+
+$$
+\begin{bmatrix}
+    \begin{array}{cc|c}
+    2   &   2  & 10 \\
+    -2  &   -3 &  3
+    \end{array}
+\end{bmatrix}
+$$
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Using elementary row operations
+
+$$
+\begin{bmatrix}
+    \begin{array}{cc|c}
+        2   &   2  & 10 \\
+        -2  &   -3 &  3
+    \end{array}
+\end{bmatrix}
+$$
+
+$$
+\begin{matrix}
+    \mathbf{R1 + R2} \rightarrow \mathbf{R2}
+\end{matrix}
+\begin{bmatrix}
+    \begin{array}{cc|c}
+        2   &   2  & 10 \\
+        0  &   -1 &  13
+    \end{array}
+\end{bmatrix}
+$$
+
+$$
+\begin{matrix}
+    \frac{1}{2}\mathbf{R1} \rightarrow \mathbf{R1}
+\end{matrix}
+\begin{bmatrix}
+    \begin{array}{cc|c}
+        1   &   1  & 5 \\
+        0  &   -1 &  13
+    \end{array}
+\end{bmatrix}
+$$
+
+$$
+\begin{matrix}
+    - \mathbf{R2} \rightarrow \mathbf{R2}
+\end{matrix}
+\begin{bmatrix}
+    \begin{array}{cc|c}
+        1   &   1   &   5   \\
+        0  &    1   &  -13
+    \end{array}
+\end{bmatrix}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### A solution
+
+#### The final operation renders:
+
+$$
+\begin{matrix}
+    \mathbf{R1} - \mathbf{R2} \rightarrow \mathbf{R1}
+\end{matrix}
+\begin{bmatrix}
+    \begin{array}{cc|c}
+        1   &   0   &   18   \\
+        0  &    1   &  -13
+    \end{array}
+\end{bmatrix}
+$$
+
+#### Notice the $x$ and $y$ values
+- $1\cdot x = 18$, and $1\cdot y = -13$
+- This is an ideal case when we have two variables.
+
+- In larger systems there are some guidelines to follow.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Reduced row echelon form rules
+
+#### In reduced row echelon form matrix
+- The first non-zero element **in each row**, called the **leading entry**, must be $1$.
+- Each leading entry must be in a column **to the right of the leading entry in the previous row**.
+- Any zero rows must be **below any non-zero rows**.
+
+#### Pivots and pivot rows
+- Leading entries that are equal to $1$ are called **pivots**.
+- The row in which the **pivots** are located are called **pivot rows**.
+- In **pivot columns**, all other entries should be zero.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Reduced row echelon form with larger systems
+
+#### Starting from the system:
+
+$$
+\begin{matrix}
+    w   & + &   2x  & + &   y     & + &   z  & = &   7   \\
+    w   & + &   2x  & + &   2y    & - &   z  & = &   12    \\
+    2w  & + &   4x  &  &         & + &   6z  & = &   4 
+\end{matrix}
+$$
+
+#### Note
+- In this case we have fewer equations than unknowns.
+- Therefore we know that the solution will not be unique
+
+#### Exercise
+Try to [solve this larger system using row operations](https://www.khanacademy.org/math/linear-algebra/vectors-and-spaces/matrices-elimination/v/matrices-reduced-row-echelon-form-1).
+
+$$
+\begin{bmatrix}
+\begin{array}{cccc|c}
+    1   &   2   &   1   &   1  &   7   \\
+    1   &   2   &   2   &   1  &   12  \\
+    2   &   4   &   0   &   6  &   4   \\
+\end{array}
+\end{bmatrix}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Solution:
+
+$$
+\begin{bmatrix}
+\begin{array}{cccc|c}
+    1   &   2   &   0   &   3  &   2   \\
+    0   &   0   &   1   &  -2  &   5  \\
+    0   &   0   &   0   &   0  &   0   \\
+\end{array}
+\end{bmatrix}
+$$
+
+#### Free variables and Basic variables
+- Each column corresponds to a specific **variable**, such as $x_1$, $x_2$ etc. .
+- Columns with pivot entries apply to **basic variables**.
+
+### What this means for solutions to systems of equations
+
+#### Assuming you have the SAME number of equations as unknowns:
+
+- If you have 0 free variables: There will be a single (point) solution for each unknown 
+- If you have 1 free variable: There will be a an infinite number of solutions in $\mathbb{R}^1$ (along a line) 
+- If you have 2 free variables: There will an infinite number of solutions in $\mathbb{R}^2$ (on a plane) 
+- If you have 3 free variables: There will an infinite number of solutions in $\mathbb{R}^3$
+- Etc...
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Exercise
+
+#### A more complex example could be:
+
+$$
+\begin{matrix}
+    3w      & + &   2x  & + &   3y      & + &   5z  & = &   10   \\
+    5w      & - &   x   & + &   2y      & - &   2z  & = &   5    \\
+    w       & + &   2x  & + &   y       & + &   3z  & = &   1    \\
+    -4w      & + &   3x  & + &   2y     & - &   4z  & = &   9
+\end{matrix}
+$$
+
+#### Notice that there are as many equations as there are unknowns.
+
+The augmented matrix is:
+
+$$
+\begin{bmatrix}
+    \begin{array}{cccc|c}
+        3   &   2   &   3   &   5  &   10   \\
+        5   &  -1   &   2   &  -8  &   5    \\
+        1   &   2   &   1   &   6  &   1    \\
+       -4   &   3   &   12  &  -4  &   9
+    \end{array}
+\end{bmatrix}
+$$
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Solution
+
+#### This solves (if I had no calculation errors) to:
+
+$$
+\begin{bmatrix}
+    \begin{array}{cccc|c}
+        1   &   0   &   0   &   0  &   \frac{1024}{185}     \\
+        0   &   1   &   0   &   0  &  -\frac{2041}{185}     \\
+        0   &   0   &   1   &   0  &   \frac{621}{185}      \\
+        0   &   0   &   0   &   1  &  -\frac{19}{185}
+    \end{array}
+\end{bmatrix}
+$$
+
+#### Which is equal to:
+
+$$
+\begin{bmatrix}
+\begin{array}{cccc|c}
+    1   &   0   &   0   &   0  &    5.54    \\
+    0   &   1   &   0   &   0  &  -11.03    \\
+    0   &   0   &   1   &   0  &   3.36     \\
+    0   &   0   &   0   &   1  &  -0.10
+\end{array}
+\end{bmatrix}
+$$
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Unique solutions
+
+#### Main diagonal pivots
+- As can be seen from the solution above, there is a unique solutions to this set of equations.
+- This is not always the case, sometimes there are multiple possibilities.
+- As in the previous example.
+
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### General cases: The null row
+
+If we find that there is a null row, with a non-zero entry in the solution vector.
+
+#### For example, if $b_4\neq 0$ 
+
+$$
+\begin{bmatrix}
+\begin{array}{cccc|c}
+    1   &   0   &   0   &   0  &    b_1    \\
+    0   &   1   &   0   &   0  &    b_2    \\
+    0   &   0   &   1   &   0  &    b_3     \\
+    0   &   0   &   0   &   0  &    b_4
+\end{array}
+\end{bmatrix}
+$$
+
+- Then this system is **INCONSISTENT**.
+- This means that there are **NO solutions** that satisfy all equations simultaneously!!
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### General cases: The null row
+
+If we find that there is a null row, with a non-zero entry in the solution vector.
+
+#### For example, if $b_4 = 0$ 
+
+$$
+\begin{bmatrix}
+\begin{array}{cccc|c}
+    1   &   0   &   0   &   0  &    b_1    \\
+    0   &   1   &   0   &   0  &    b_2    \\
+    0   &   0   &   1   &   0  &    b_3     \\
+    0   &   0   &   0   &   0  &    b_4
+\end{array}
+\end{bmatrix}
+$$
+
+- Then this system is **CONSISTENT**.
+It also means that there are an infinite number of solutions that fall along either a line or a plane in $\mathbb{R}^4$
+
+ 
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+## Exercises
+
+
+
+
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
@@ -762,7 +1324,7 @@ $$
 
 ### Expanding the number of industries
 
-If we expand the number of industries to $m$ total indistries then we
+If we expand the number of industries to $m$ total industries then we
 get:
 
 $$
@@ -801,7 +1363,7 @@ $$
 
 ### Separating the $x$ variables from the coefficients
 
-- We can arrange the coeficients like this, with the $x$ variables as a vector.
+- We can arrange the coefficients like this, with the $x$ variables as a vector.
 
 $$
     \begin{bmatrix}
@@ -869,22 +1431,40 @@ $$
 (\mathbf{I} - \mathbf{A}) \cdot \mathbf{x} = \mathbf{b}
 $$
 
-#### The solutions vector of $x$ would then be:
+- But this is not useful in finding the values of $x$, what we really want is for $\mathbf{I} - \mathbf{A})$ to be on the right hand side.
+- To do this we need to understand something called the **Inverse matrix**, so that:
 
 $$
 (\mathbf{I} - \mathbf{A})^{-1} \cdot (\mathbf{I} - \mathbf{A}) \cdot \mathbf{x}^* = (\mathbf{I} - \mathbf{A})^{-1} \cdot \mathbf{b}
 $$
 
+- Anything, divided by itself in regular algebra = $1$. This is a similar idea.
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%% New slide %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+### Using the inverse of $(\mathbf{I} - \mathbf{A})$
+
+#### Similar to regular algebra
+
+Since 
 $$
-1 \cdot \mathbf{x}^* = (\mathbf{I} - \mathbf{A})^{-1} \cdot \mathbf{b}
+(\mathbf{I} - \mathbf{A})^{-1} \cdot (\mathbf{I} - \mathbf{A}) = \mathbf{I}
 $$
-Or just
+
+Then: 
+
+$$
+\mathbf{I} \cdot \mathbf{x}^* = (\mathbf{I} - \mathbf{A})^{-1} \cdot \mathbf{b}
+$$
+
+We know that $\mathbf{I} \cdot (\text{any matrix}) = \text{that matrix}$, we know that:
 $$
 \mathbf{x}^* = (\mathbf{I} - \mathbf{A})^{-1} \cdot \mathbf{b}
 $$
 
-- Note the order of multiplication on the right hand side (RHS)
-
+#### Note
+The order of multiplication is **EXTREMELY IMPORTANT**!!
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%% New section %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
